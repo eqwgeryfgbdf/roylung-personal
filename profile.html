@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
         body {
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #D4C9BE;
+            color: #030303;
         }
         .profile-header {
-            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
-            color: white;
+            background: linear-gradient(135deg, #123458 0%, #030303 100%);
+            color: #F1EFEC;
             padding: 2rem 0;
             margin-bottom: 1.5rem;
         }
@@ -21,24 +21,30 @@
             width: 280px;
             height: 280px;
             border-radius: 50%;
-            border: 5px solid white;
+            border: 5px solid #F1EFEC;
             object-fit: cover;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(3, 3, 3, 0.2);
             transition: transform 0.3s ease;
         }
         .profile-avatar:hover {
             transform: scale(1.05);
         }
         .section-title {
-            color: #000DFF;
-            border-bottom: 2px solid #000DFF;
+            color: #123458;
+            border-bottom: 2px solid #123458;
             padding-bottom: 0.3rem;
             margin-bottom: 1rem;
         }
         .card {
             border: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #F1EFEC;
+            box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
             margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(3, 3, 3, 0.2);
+            transform: translateY(-2px);
         }
         .card-body {
             padding: 1rem;
@@ -53,44 +59,58 @@
             max-width: 1400px;
         }
         .skill-tag {
-            background-color: #e9ecef;
+            background-color: #123458;
+            color: #F1EFEC;
             padding: 0.5rem 1rem;
             border-radius: 20px;
             margin: 0.25rem;
             display: inline-block;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            background-color: #030303;
+            transform: translateY(-2px);
         }
         .social-links a {
-            color: white;
+            color: #F1EFEC;
             margin: 0 0.5rem;
             font-size: 1.5rem;
+            transition: all 0.3s ease;
         }
         .social-links a:hover {
-            color: #f8f9fa;
+            color: #D4C9BE;
+            transform: translateY(-2px);
         }
         .introduction-text {
             line-height: 1.8;
             white-space: pre-line;
             font-size: 1.1rem;
-            color: #444;
+            color: #030303;
             text-align: justify;
         }
         .github-card {
-            border: 1px solid #e1e4e8;
+            border: none;
             border-radius: 6px;
             padding: 16px;
             margin-bottom: 16px;
-            background-color: white;
+            background-color: #F1EFEC;
+            box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+            transition: all 0.3s ease;
+        }
+        .github-card:hover {
+            box-shadow: 0 4px 8px rgba(3, 3, 3, 0.2);
+            transform: translateY(-2px);
         }
         .github-card h4 {
             margin: 0;
             font-size: 16px;
-            color: #0366d6;
+            color: #123458;
         }
         .github-stats {
             margin-top: 8px;
             font-size: 12px;
-            color: #586069;
+            color: #030303;
         }
         .github-stats span {
             margin-right: 16px;
@@ -101,6 +121,8 @@
             height: 0;
             overflow: hidden;
             margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
         }
         .video-container iframe {
             position: absolute;
@@ -113,8 +135,11 @@
         .project-links a {
             margin-right: 10px;
             text-decoration: none;
+            color: #123458;
+            transition: all 0.3s ease;
         }
         .project-links a:hover {
+            color: #030303;
             text-decoration: underline;
         }
         @media (max-width: 768px) {
@@ -143,14 +168,36 @@
             position: absolute;
             left: 0;
             top: 0.25rem;
-            color: #0d6efd;
+            color: #123458;
         }
         .card-subtitle {
-            color: #666 !important;
+            color: #030303 !important;
             font-weight: 500;
         }
         .text-muted {
-            color: #666 !important;
+            color: #030303 !important;
+            opacity: 0.8;
+        }
+        .btn-primary {
+            background-color: #123458;
+            border-color: #123458;
+            color: #F1EFEC;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #030303;
+            border-color: #030303;
+            transform: translateY(-2px);
+        }
+        .btn-outline-primary {
+            color: #123458;
+            border-color: #123458;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-primary:hover {
+            background-color: #123458;
+            color: #F1EFEC;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -240,6 +287,11 @@
                 <section class="mb-5">
                     <h3 class="section-title">競賽經歷</h3>
                     <div id="competitions"></div>
+                    <div class="text-center mt-3">
+                        <a href="awards.html" class="btn btn-primary">
+                            <i class="bi bi-trophy"></i> 查看所有獎狀
+                        </a>
+                    </div>
                 </section>
             </div>
         </div>
@@ -416,7 +468,7 @@
                                 <small class="text-muted">取得日期：${cert.date}</small>
                             </p>
                             ${cert.credentialId ? `
-                                <a href="data/證照/${cert.credentialId}" class="btn btn-outline-primary btn-sm" target="_blank">
+                                <a href="${cert.credentialId}" class="btn btn-outline-primary btn-sm" target="_blank">
                                     <i class="bi bi-file-earmark-pdf"></i> 查看證書
                                 </a>
                             ` : ''}
@@ -426,21 +478,19 @@
                 document.getElementById('certifications').innerHTML = certificationsHtml;
 
                 // 競賽經歷
-                const competitionsHtml = data.competitions.map(comp => `
+                const competitionsHtml = data.competitions.slice(0, 3).map(comp => `
                     <div class="card mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">${comp.name}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">${comp.organizer}</h6>
+                            <h5 class="card-title">${comp.name_zh || comp.name}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">${comp.organizer_zh || comp.organizer}</h6>
                             <p class="card-text">
                                 <small class="text-muted">${comp.date}</small><br>
-                                <strong>成就：</strong>${comp.achievement}
+                                <strong>成就：</strong>${comp.achievement_zh || comp.achievement}
                             </p>
-                            <p class="card-text">${comp.description.replace(/\n/g, '<br>')}</p>
-                            ${comp.certificate ? `
-                                <a href="data/競賽參加證明/${comp.certificate}" class="btn btn-outline-primary btn-sm" target="_blank">
-                                    <i class="bi bi-file-earmark-pdf"></i> 查看證書
-                                </a>
-                            ` : ''}
+                            <p class="card-text">${comp.description_zh ? comp.description_zh.replace(/\n/g, '<br>') : comp.description.replace(/\n/g, '<br>')}</p>
+                            <a href="awards.html" class="btn btn-outline-primary btn-sm">
+                                <i class="bi bi-file-earmark-pdf"></i> 查看證書
+                            </a>
                         </div>
                     </div>
                 `).join('');
