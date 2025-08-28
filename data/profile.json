@@ -1,0 +1,255 @@
+{
+  "basicInfo": {
+    "name": "龍禹丞",
+    "email": "lungyuchengroy@gmail.com",
+    "phone": "0988-288-034",
+    "location": "台北市",
+    "github": "https://github.com/eqwgeryfgbdf",
+    "avatar": "data/photos/profile_photo.jpeg",
+    "objective": "期望透過資訊科技與軟體開發相關之實習，進一步深化專業技能，並持續探索更多技術創新的可能性，為產業發展做出貢獻。",
+    "introduction": "我是龍禹丞，目前就讀於龍華科技大學資訊網路工程系，具備跨領域的軟硬體整合技術，特別專精於AI邊緣運算及物聯網智慧應用開發。擁有一定的團隊合作經驗，了解跨團隊溝通協調與資源整合，能有效發揮團隊每位成員的專業，達成專案目標。\n\n在學期間，我多次參與國內外競賽並獲得佳績，包括亞洲智慧型機器人大賽、TIRT全能機器人國際賽及E化系統創意應用競賽，培養出強大的專案管理、問題分析與解決能力。此外，我也積極取得相關專業證照，如電路板設計國際能力認證（專業級 Specialist），能將學術理論有效轉化為實務成果。\n\n我個性積極、主動，具有快速學習能力，對新興科技始終充滿熱忱，並致力於透過科技開發解決現實問題。我期望未來能透過軟體工程相關實習或工作，不斷深化專業技能，持續為科技產業做出積極貢獻。"
+  },
+  "education": [
+    {
+      "school": "龍華科技大學",
+      "degree": "學士",
+      "major": "資訊工程系",
+      "startDate": "2022",
+      "endDate": "2026",
+      "gpa": "3.8/4.0",
+      "honors": [
+        "E化系統創意應⽤競賽第二名",
+        "專題競賽優勝",
+        "多次獲得書卷獎",
+        "機器人競賽優勝"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "龍華科技大學資訊網路工程系",
+      "position": "網站維護助理",
+      "startDate": "2024/01",
+      "endDate": "2025/01",
+      "description": "負責學校官方網站的內容更新與系統維護工作",
+      "achievements": [
+        "定期更新學校網站內容與公告",
+        "維護網站資料庫與系統穩定性",
+        "協助處理網站相關問題與需求",
+        "確保網站資訊的即時性與準確性"
+      ]
+    },
+    {
+      "company": "龍華科技大學工程學院",
+      "position": "電腦硬體維護工讀生",
+      "startDate": "2023/09",
+      "endDate": "至今",
+      "description": "負責工程學院與資訊網路工程系的電腦硬體維護及維修工作",
+      "achievements": [
+        "定期檢查和維護電腦教室設備，確保正常運作",
+        "診斷並解決硬體故障問題，包括零件更換和系統重置",
+        "協助建置和維護電腦實驗室環境",
+        "提供教職員電腦硬體相關技術支援"
+      ]
+    }
+  ],
+  "skills": {
+    "technical": [
+      "Python",
+      "C/C++",
+      "SQL",
+      "HTML",
+      "ASP.NET MVC",
+      "Linux",
+      "網路架構",
+      "硬體診斷",
+      "CST系統模擬仿真",
+      "AI邊緣運算",
+      "物聯網應用開發",
+      "電路板設計"
+    ],
+    "languages": [
+      "中文（母語）",
+      "基本英文"
+    ],
+    "tools": [
+      "Visual Studio",
+      "PyCharm",
+      "Cursor",
+      "WebStorm",
+      "Git",
+      "Docker"
+    ],
+    "softSkills": [
+      "團隊合作與溝通能力：具備豐富的團體專案經驗，能在不同角色間順暢溝通，幫助團隊快速達成共識並推進專案進度。",
+      "跨團隊整合能力：擅於整合多個團隊的專業技能與資源，透過清晰有效的協調與溝通方式，促使不同團隊彼此理解，並發揮各自專長，共同創造出更多創新可能性。",
+      "問題解決與分析能力：具有實務的問題排查經驗，特別是在電腦硬體、系統模擬仿真與軟硬體整合方面，能有效診斷與分析問題，並提出實際可行的解決方案。",
+      "學習與適應能力：熱衷於持續學習新技術與方法，善於快速適應各種不同的技術領域，從硬體設計到軟體開發及模擬仿真，皆有實務操作與專案經驗。",
+      "專案執行與管理能力：在多項競賽與專題中扮演重要角色，具備將構想轉化為具體行動的能力，且善於規劃與管理專案的時程及任務，確保團隊能順利且高效率地達成目標。"
+    ]
+  },
+  "projects": [
+    {
+      "name": "手勢辨識系統",
+      "description": "開發基於深度學習的手勢辨識系統，實現即時手勢識別功能",
+      "technologies": ["Python", "OpenCV", "TensorFlow", "深度學習"],
+      "achievements": [
+        "實現即時手勢識別功能",
+        "支援多種手勢模式",
+        "優化識別準確率"
+      ]
+    },
+    {
+      "name": "記帳投資應用系統(開發中)",
+      "description": "開發個人記帳與投資管理整合系統，提供財務追蹤與投資分析功能",
+      "technologies": ["Python", "SQLite", "Flask", "React"],
+      "achievements": [
+        "實現個人收支記錄功能",
+        "整合投資組合管理",
+        "提供財務分析報表"
+      ]
+    },
+    {
+      "name": "參考資料整理系統(開發中)",
+      "description": "開發自動化文獻整理與管理系統，協助研究資料的組織與檢索",
+      "technologies": ["Python", "自然語言處理", "資料庫"],
+      "achievements": [
+        "自動化文獻分類",
+        "關鍵字提取與標記",
+        "智能搜尋功能"
+      ]
+    },
+    {
+      "name": "智能魚竿開發專題",
+      "description": "開發整合感測器的智能釣魚竿，提供即時數據監測與分析",
+      "technologies": ["Arduino", "感測器", "藍牙通訊"],
+      "achievements": [
+        "整合多種感測器",
+        "實現即時數據傳輸",
+        "開發手機應用程式介面"
+      ]
+    },
+    {
+      "name": "智慧監測系統",
+      "description": "開發環境監測與數據分析系統，實現智能化的環境監控",
+      "technologies": ["Python", "IoT", "資料分析"],
+      "achievements": [
+        "即時環境數據監測",
+        "異常事件警報",
+        "數據視覺化分析"
+      ]
+    },
+    {
+      "name": "象棋辨識系統",
+      "description": "開發基於電腦視覺的中國象棋棋盤辨識系統",
+      "technologies": ["Python", "OpenCV", "機器學習"],
+      "achievements": [
+        "實現棋盤狀態辨識",
+        "棋子位置追蹤",
+        "棋局分析功能"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "電路板設計國際能力認證（專業級 Specialist）",
+      "issuer": "國際認證機構",
+      "date": "2024/12/28",
+      "credentialId": "data/certificates/pcb_specialist_certificate_20241228.pdf"
+    },
+    {
+      "name": "TQC 專業技能認證",
+      "issuer": "財團法人中華民國電腦技能基金會",
+      "date": "2024",
+      "credentialId": "data/certificates/tqc_iot_certificate_20231227.jpg"
+    },
+    {
+      "name": "PVQC AI 專業英文能力國際認證",
+      "issuer": "財團法人中華民國電腦技能基金會",
+      "date": "2024",
+      "credentialId": "data/certificates/pvqc_ai_certificate_23G.pdf"
+    }
+  ],
+  "competitions": [
+    {
+      "name": "2025 E-System Innovation Application Competition",
+      "name_zh": "2025 E化系統創意應用競賽",
+      "organizer": "System Application and Innovation Competition",
+      "organizer_zh": "E化系統創意應用競賽委員會",
+      "date": "2025",
+      "achievement": "Second Place, Excellence Award",
+      "achievement_zh": "第二名、優等獎",
+      "description": "1. Project: 'Multi-user Real-time English Spelling Translation Sign Language System Based on Skeleton Object Recognition'\nTeam: AI Love Sign Language\n2. Project: 'Advanced Workshop Safety Intelligence System Combining Deep Learning and Real-time Computer Vision'\nTeam: Safety First",
+      "description_zh": "1. 專案：「基於骨架物件辨識的多使用者即時英文拼字翻譯手語系統」\n團隊：AI(愛)不釋手就隊\n2. 專案：「結合深度學習與即時電腦視覺之進階工作坊安全智慧系統」\n團隊：小孩愛吃隊",
+      "certificate": "data/competition_certificates/e_system_innovation/team1_ai_sign_language.pdf"
+    },
+    {
+      "name": "TIRT 2023 International All-Around Robot Competition",
+      "name_zh": "TIRT 2023 全能機器人國際賽",
+      "organizer": "TIRT 2023",
+      "organizer_zh": "TIRT 2023 全能機器人國際賽委員會",
+      "date": "2023/10/29",
+      "achievement": "Lightweight Sumo Robot Division Participant",
+      "achievement_zh": "輕量級相撲機器人組參賽",
+      "description": "International Competition Participation",
+      "description_zh": "國際賽事參與經驗",
+      "certificate": "data/competition_certificates/TIRT/participation_certificate_20231029.pdf"
+    },
+    {
+      "name": "2023 34th AERC Asia Robot Competition",
+      "name_zh": "2023 第34屆亞洲智慧型機器人大賽",
+      "organizer": "AERC",
+      "organizer_zh": "亞洲智慧型機器人大賽委員會",
+      "date": "2023",
+      "achievement": "Multiple Awards",
+      "achievement_zh": "多項獎項",
+      "description": "1. C05 Wheeled Robot Challenge: First Place (Group A, Group D)\n2. C05 Robot Rush: First Place (Group A), Honorable Mention (Group A)\n3. A05 Robot Navigation: Second Place (Group A), Fourth Place (Group A), Honorable Mention (Group A, Group D)\n4. C05 Wheeled Robot Challenge: Honorable Mention (Group A)\n5. B05 Wheeled Robot Challenge: Honorable Mention (Group A)\n6. C01 Robot Line Tracking: Honorable Mention (Group A)",
+      "description_zh": "1. C05 輪型機器人橫衝直撞：第一名（A組、D組）\n2. C05 機器人向前衝：第一名（A組）、佳作（A組）\n3. A05 機器人東奔西跑：第二名（A組）、第四名（A組）、佳作（A組、D組）\n4. C05 輪型機器人橫衝直撞：佳作（A組）\n5. B05 輪型機器人橫衝直撞：佳作（A組）\n6. C01 機器人循跡挑戰：佳作（A組）",
+      "certificate": "data/competition_certificates/AERC/c05_wheeled_robot_1st_a.pdf"
+    },
+    {
+      "name": "2022 AERC Asia Robot Competition",
+      "name_zh": "2022 亞洲智慧型機器人大賽",
+      "organizer": "AERC",
+      "organizer_zh": "亞洲智慧型機器人大賽委員會",
+      "date": "2022",
+      "achievement": "Third Place",
+      "achievement_zh": "第三名",
+      "description": "C04 Robot Rush: Third Place (Group A)",
+      "description_zh": "C04 機器人向前衝：第三名（A組）",
+      "certificate": "data/competition_certificates/AERC/c04_robot_rush_3rd_a.pdf"
+    }
+  ],
+  "githubProjects": [
+    {
+      "name": "Personal_page",
+      "description": "使用現代化前端技術開發的個人網站，展示個人作品集、經歷和技能。採用 Bootstrap 框架實現響應式設計，提供良好的用戶體驗。",
+      "url": "https://github.com/eqwgeryfgbdf/Personal_page",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML/CSS/JavaScript",
+      "topics": ["個人網站", "前端開發", "響應式設計", "Bootstrap"]
+    },
+    {
+      "name": "智慧家居環境監測系統",
+      "description": "基於物聯網技術的智慧家居環境監測系統，實現即時數據採集、分析和可視化展示。",
+      "url": "https://github.com/eqwgeryfgbdf/SmartHome",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python/C++",
+      "topics": ["IoT", "環境監測", "數據分析", "即時監控"]
+    }
+  ],
+  "projectVideos": [
+    {
+      "title": "智慧家居環境監測系統展示",
+      "url": "https://www.youtube.com/embed/MziUm7HB__E",
+      "description": "展示智慧家居環境監測系統的功能特點和實際應用場景，包含即時數據監測、異常警報和數據分析等核心功能。"
+    },
+    {
+      "title": "手語翻譯系統展示",
+      "url": "https://www.youtube.com/embed/your-video-id-2",
+      "description": "基於骨架物件辨識的多使用者即時英文拼字翻譯手語系統，展示系統的即時辨識和翻譯功能。"
+    }
+  ]
+} 

@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>龍禹丞 - 個人檔案</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #D4C9BE;
+            color: #030303;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
+        .profile-header {
+            background: linear-gradient(135deg, #123458 0%, #030303 100%);
+            color: #F1EFEC;
+            padding: 2rem 0;
+            margin-bottom: 1.5rem;
+        }
+        .profile-avatar {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 5px solid #F1EFEC;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(3, 3, 3, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .profile-avatar:hover { transform: scale(1.05); }
+        .section-title {
+            color: #123458;
+            border-bottom: 2px solid #123458;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .card {
+            border: none;
+            background-color: #F1EFEC;
+            box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(3, 3, 3, 0.2);
+            transform: translateY(-2px);
+        }
+        .card-body { padding: 1rem; }
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #123458;
+        }
+        .card-subtitle {
+            color: #030303;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+        .card-text {
+            color: #030303;
+            margin-bottom: 0.5rem;
+        }
+        .skill-tag {
+            background-color: #123458;
+            color: #F1EFEC;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.25rem;
+            display: inline-block;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .skill-tag:hover {
+            background-color: #030303;
+            transform: translateY(-2px);
+        }
+        .social-links a {
+            color: #F1EFEC;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .social-links a:hover {
+            color: #D4C9BE;
+            transform: translateY(-2px);
+        }
+        .introduction-text {
+            line-height: 1.8;
+            white-space: pre-line;
+            font-size: 1.1rem;
+            color: #030303;
+            text-align: justify;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .project-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #123458;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 1px solid #123458;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .project-links a:hover {
+            color: #F1EFEC;
+            background-color: #123458;
+            text-decoration: none;
+        }
+        .list-unstyled { list-style: none; }
+        .list-unstyled li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .list-unstyled li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #123458;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #123458;
+            border-color: #123458;
+            color: #F1EFEC;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background-color: #030303;
+            border-color: #030303;
+            transform: translateY(-2px);
+            color: #F1EFEC;
+        }
+        .btn-outline-primary {
+            color: #123458;
+            border: 1px solid #123458;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            background-color: transparent;
+        }
+        .btn-outline-primary:hover {
+            background-color: #123458;
+            color: #F1EFEC;
+            transform: translateY(-2px);
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -0.5rem;
+        }
+        .col-lg-8, .col-lg-4, .col-md-6 { padding: 0 0.5rem; }
+        .col-lg-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+        .col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+        .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+        .text-center { text-align: center; }
+        .mb-1 { margin-bottom: 0.25rem !important; }
+        .mb-2 { margin-bottom: 0.5rem !important; }
+        .mb-3 { margin-bottom: 1rem !important; }
+        .mb-4 { margin-bottom: 1.5rem !important; }
+        .mb-5 { margin-bottom: 3rem !important; }
+        .mt-2 { margin-top: 0.5rem !important; }
+        .mt-3 { margin-top: 1rem !important; }
+        .display-4 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+        .h3 {
+            font-size: 1.75rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        .lead {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+        .text-muted {
+            color: #030303 !important;
+            opacity: 0.8;
+        }
+        .small { font-size: 0.875em; }
+        .d-flex { display: flex; }
+        .justify-content-between { justify-content: space-between; }
+        .align-items-start { align-items: flex-start; }
+        .align-items-center { align-items: center; }
+        .github-stats {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #030303;
+        }
+        .github-stats span { margin-right: 16px; }
+        
+        @media (max-width: 768px) {
+            .profile-avatar {
+                width: 220px;
+                height: 220px;
+                margin-bottom: 1rem;
+            }
+            .col-lg-8, .col-lg-4, .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .display-4 { font-size: 2rem; }
+            .h3 { font-size: 1.5rem; }
+        }
+        
+        @media (min-width: 1200px) {
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="profile-header">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4 col-md-5 text-center">
+                <img id="profile-avatar" src="" alt="個人照片" class="profile-avatar mb-3">
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <h1 id="profile-name" class="display-4 mb-2"></h1>
+                <h2 id="profile-title" class="h3 mb-2"></h2>
+                <p id="profile-location" class="mb-1"></p>
+                <p id="profile-contact" class="mb-2"></p>
+                <p id="profile-objective" class="lead mb-3"></p>
+                <div class="social-links">
+                    <a href="#" id="github-link" target="_blank">📁 GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <section class="mb-5">
+                <h3 class="section-title">關於我</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <p id="profile-introduction" class="introduction-text"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h3 class="section-title">工作經驗</h3>
+                <div id="experience"></div>
+            </section>
+
+            <section class="mb-5">
+                <h3 class="section-title">專案經驗</h3>
+                <div id="projects"></div>
+            </section>
+
+            <section class="mb-5">
+                <h3 class="section-title">GitHub 作品集</h3>
+                <div id="github-projects"></div>
+            </section>
+
+            <section class="mb-5">
+                <h3 class="section-title">作品展示</h3>
+                <div id="project-videos" class="row"></div>
+            </section>
+        </div>
+
+        <div class="col-lg-4">
+            <section class="mb-5">
+                <h3 class="section-title">教育經歷</h3>
+                <div id="education"></div>
+            </section>
+
+            <section class="mb-5">
+                <h3 class="section-title">技能專長</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">技術技能</h5>
+                        <div id="technical-skills"></div>
+                        <h5 class="card-title mt-3">語言能力</h5>
+                        <div id="languages"></div>
+                        <h5 class="card-title mt-3">工具使用</h5>
+                        <div id="tools"></div>
+                        <h5 class="card-title mt-3">軟實力</h5>
+                        <div id="soft-skills"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-5">
+                <h3 class="section-title">證照與認證</h3>
+                <div id="certifications"></div>
+            </section>
+
+            <section class="mb-5">
+                <h3 class="section-title">競賽經歷</h3>
+                <div id="competitions"></div>
+                <div class="text-center mt-3">
+                    <a href="awards.html" class="btn btn-primary">
+                        🏆 查看所有獎狀
+                    </a>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 內聯個人資料資料
+    const profileData = {
+        "basicInfo": {
+            "name": "龍禹丞",
+            "email": "lungyuchengroy@gmail.com",
+            "phone": "0988-288-034",
+            "location": "台北市",
+            "github": "https://github.com/eqwgeryfgbdf",
+            "avatar": "data/photos/profile_photo.jpeg",
+            "objective": "期望透過資訊科技與軟體開發相關之實習，進一步深化專業技能，並持續探索更多技術創新的可能性，為產業發展做出貢獻。",
+            "introduction": "我是龍禹丞，目前就讀於龍華科技大學資訊網路工程系，具備跨領域的軟硬體整合技術，特別專精於AI邊緣運算及物聯網智慧應用開發。擁有一定的團隊合作經驗，了解跨團隊溝通協調與資源整合，能有效發揮團隊每位成員的專業，達成專案目標。\n\n在學期間，我多次參與國內外競賽並獲得佳績，包括亞洲智慧型機器人大賽、TIRT全能機器人國際賽及E化系統創意應用競賽，培養出強大的專案管理、問題分析與解決能力。此外，我也積極取得相關專業證照，如電路板設計國際能力認證（專業級 Specialist），能將學術理論有效轉化為實務成果。\n\n我個性積極、主動，具有快速學習能力，對新興科技始終充滿熱忱，並致力於透過科技開發解決現實問題。我期望未來能透過軟體工程相關實習或工作，不斷深化專業技能，持續為科技產業做出積極貢獻。"
+        },
+        "education": [
+            {
+                "school": "龍華科技大學",
+                "degree": "學士",
+                "major": "資訊工程系",
+                "startDate": "2022",
+                "endDate": "2026",
+                "gpa": "3.8/4.0",
+                "honors": [
+                    "E化系統創意應⽤競賽第二名",
+                    "專題競賽優勝",
+                    "多次獲得書卷獎",
+                    "機器人競賽優勝"
+                ]
+            }
+        ],
+        "experience": [
+            {
+                "company": "龍華科技大學資訊網路工程系",
+                "position": "網站維護助理",
+                "startDate": "2024/01",
+                "endDate": "2025/01",
+                "description": "負責學校官方網站的內容更新與系統維護工作",
+                "achievements": [
+                    "定期更新學校網站內容與公告",
+                    "維護網站資料庫與系統穩定性",
+                    "協助處理網站相關問題與需求",
+                    "確保網站資訊的即時性與準確性"
+                ]
+            },
+            {
+                "company": "龍華科技大學工程學院",
+                "position": "電腦硬體維護工讀生",
+                "startDate": "2023/09",
+                "endDate": "至今",
+                "description": "負責工程學院與資訊網路工程系的電腦硬體維護及維修工作",
+                "achievements": [
+                    "定期檢查和維護電腦教室設備，確保正常運作",
+                    "診斷並解決硬體故障問題，包括零件更換和系統重置",
+                    "協助建置和維護電腦實驗室環境",
+                    "提供教職員電腦硬體相關技術支援"
+                ]
+            }
+        ],
+        "skills": {
+            "technical": [
+                "Python", "C/C++", "SQL", "HTML", "ASP.NET MVC", "Linux",
+                "網路架構", "硬體診斷", "CST系統模擬仿真", "AI邊緣運算",
+                "物聯網應用開發", "電路板設計"
+            ],
+            "languages": ["中文（母語）", "基本英文"],
+            "tools": ["Visual Studio", "PyCharm", "Cursor", "WebStorm", "Git", "Docker"],
+            "softSkills": [
+                "團隊合作與溝通能力：具備豐富的團體專案經驗，能在不同角色間順暢溝通，幫助團隊快速達成共識並推進專案進度。",
+                "跨團隊整合能力：擅於整合多個團隊的專業技能與資源，透過清晰有效的協調與溝通方式，促使不同團隊彼此理解，並發揮各自專長，共同創造出更多創新可能性。",
+                "問題解決與分析能力：具有實務的問題排查經驗，特別是在電腦硬體、系統模擬仿真與軟硬體整合方面，能有效診斷與分析問題，並提出實際可行的解決方案。",
+                "學習與適應能力：熱衷於持續學習新技術與方法，善於快速適應各種不同的技術領域，從硬體設計到軟體開發及模擬仿真，皆有實務操作與專案經驗。",
+                "專案執行與管理能力：在多項競賽與專題中扮演重要角色，具備將構想轉化為具體行動的能力，且善於規劃與管理專案的時程及任務，確保團隊能順利且高效率地達成目標。"
+            ]
+        },
+        "projects": [
+            {
+                "name": "手勢辨識系統",
+                "description": "開發基於深度學習的手勢辨識系統，實現即時手勢識別功能",
+                "technologies": ["Python", "OpenCV", "TensorFlow", "深度學習"],
+                "achievements": ["實現即時手勢識別功能", "支援多種手勢模式", "優化識別準確率"]
+            },
+            {
+                "name": "記帳投資應用系統(開發中)",
+                "description": "開發個人記帳與投資管理整合系統，提供財務追蹤與投資分析功能",
+                "technologies": ["Python", "SQLite", "Flask", "React"],
+                "achievements": ["實現個人收支記錄功能", "整合投資組合管理", "提供財務分析報表"]
+            },
+            {
+                "name": "參考資料整理系統(開發中)",
+                "description": "開發自動化文獻整理與管理系統，協助研究資料的組織與檢索",
+                "technologies": ["Python", "自然語言處理", "資料庫"],
+                "achievements": ["自動化文獻分類", "關鍵字提取與標記", "智能搜尋功能"]
+            },
+            {
+                "name": "智能魚竿開發專題",
+                "description": "開發整合感測器的智能釣魚竿，提供即時數據監測與分析",
+                "technologies": ["Arduino", "感測器", "藍牙通訊"],
+                "achievements": ["整合多種感測器", "實現即時數據傳輸", "開發手機應用程式介面"]
+            },
+            {
+                "name": "智慧監測系統",
+                "description": "開發環境監測與數據分析系統，實現智能化的環境監控",
+                "technologies": ["Python", "IoT", "資料分析"],
+                "achievements": ["即時環境數據監測", "異常事件警報", "數據視覺化分析"]
+            },
+            {
+                "name": "象棋辨識系統",
+                "description": "開發基於電腦視覺的中國象棋棋盤辨識系統",
+                "technologies": ["Python", "OpenCV", "機器學習"],
+                "achievements": ["實現棋盤狀態辨識", "棋子位置追蹤", "棋局分析功能"]
+            }
+        ],
+        "certifications": [
+            {
+                "name": "電路板設計國際能力認證（專業級 Specialist）",
+                "issuer": "國際認證機構",
+                "date": "2024/12/28",
+                "credentialId": "data/certificates/pcb_specialist_certificate_20241228.pdf"
+            },
+            {
+                "name": "TQC 專業技能認證",
+                "issuer": "財團法人中華民國電腦技能基金會",
+                "date": "2024",
+                "credentialId": "data/certificates/tqc_iot_certificate_20231227.jpg"
+            },
+            {
+                "name": "PVQC AI 專業英文能力國際認證",
+                "issuer": "財團法人中華民國電腦技能基金會",
+                "date": "2024",
+                "credentialId": "data/certificates/pvqc_ai_certificate_23G.pdf"
+            }
+        ],
+        "competitions": [
+            {
+                "name": "2025 E-System Innovation Application Competition",
+                "name_zh": "2025 E化系統創意應用競賽",
+                "organizer": "System Application and Innovation Competition",
+                "organizer_zh": "E化系統創意應用競賽委員會",
+                "date": "2025",
+                "achievement": "Second Place, Excellence Award",
+                "achievement_zh": "第二名、優等獎",
+                "description": "1. Project: 'Multi-user Real-time English Spelling Translation Sign Language System Based on Skeleton Object Recognition'\nTeam: AI Love Sign Language\n2. Project: 'Advanced Workshop Safety Intelligence System Combining Deep Learning and Real-time Computer Vision'\nTeam: Safety First",
+                "description_zh": "1. 專案：「基於骨架物件辨識的多使用者即時英文拼字翻譯手語系統」\n團隊：AI(愛)不釋手就隊\n2. 專案：「結合深度學習與即時電腦視覺之進階工作坊安全智慧系統」\n團隊：小孩愛吃隊",
+                "certificate": "data/competition_certificates/e_system_innovation/team1_ai_sign_language.pdf"
+            },
+            {
+                "name": "TIRT 2023 International All-Around Robot Competition",
+                "name_zh": "TIRT 2023 全能機器人國際賽",
+                "organizer": "TIRT 2023",
+                "organizer_zh": "TIRT 2023 全能機器人國際賽委員會",
+                "date": "2023/10/29",
+                "achievement": "Lightweight Sumo Robot Division Participant",
+                "achievement_zh": "輕量級相撲機器人組參賽",
+                "description": "International Competition Participation",
+                "description_zh": "國際賽事參與經驗",
+                "certificate": "data/competition_certificates/TIRT/participation_certificate_20231029.pdf"
+            },
+            {
+                "name": "2023 34th AERC Asia Robot Competition",
+                "name_zh": "2023 第34屆亞洲智慧型機器人大賽",
+                "organizer": "AERC",
+                "organizer_zh": "亞洲智慧型機器人大賽委員會",
+                "date": "2023",
+                "achievement": "Multiple Awards",
+                "achievement_zh": "多項獎項",
+                "description": "1. C05 Wheeled Robot Challenge: First Place (Group A, Group D)\n2. C05 Robot Rush: First Place (Group A), Honorable Mention (Group A)\n3. A05 Robot Navigation: Second Place (Group A), Fourth Place (Group A), Honorable Mention (Group A, Group D)\n4. C05 Wheeled Robot Challenge: Honorable Mention (Group A)\n5. B05 Wheeled Robot Challenge: Honorable Mention (Group A)\n6. C01 Robot Line Tracking: Honorable Mention (Group A)",
+                "description_zh": "1. C05 輪型機器人橫衝直撞：第一名（A組、D組）\n2. C05 機器人向前衝：第一名（A組）、佳作（A組）\n3. A05 機器人東奔西跑：第二名（A組）、第四名（A組）、佳作（A組、D組）\n4. C05 輪型機器人橫衝直撞：佳作（A組）\n5. B05 輪型機器人橫衝直撞：佳作（A組）\n6. C01 機器人循跡挑戰：佳作（A組）",
+                "certificate": "data/competition_certificates/AERC/c05_wheeled_robot_1st_a.pdf"
+            },
+            {
+                "name": "2022 AERC Asia Robot Competition",
+                "name_zh": "2022 亞洲智慧型機器人大賽",
+                "organizer": "AERC",
+                "organizer_zh": "亞洲智慧型機器人大賽委員會",
+                "date": "2022",
+                "achievement": "Third Place",
+                "achievement_zh": "第三名",
+                "description": "C04 Robot Rush: Third Place (Group A)",
+                "description_zh": "C04 機器人向前衝：第三名（A組）",
+                "certificate": "data/competition_certificates/AERC/c04_robot_rush_3rd_a.pdf"
+            }
+        ],
+        "githubProjects": [
+            {
+                "name": "Personal_page",
+                "description": "使用現代化前端技術開發的個人網站，展示個人作品集、經歷和技能。採用 Bootstrap 框架實現響應式設計，提供良好的用戶體驗。",
+                "url": "https://github.com/eqwgeryfgbdf/Personal_page",
+                "stars": 0,
+                "forks": 0,
+                "language": "HTML/CSS/JavaScript",
+                "topics": ["個人網站", "前端開發", "響應式設計", "Bootstrap"]
+            },
+            {
+                "name": "智慧家居環境監測系統",
+                "description": "基於物聯網技術的智慧家居環境監測系統，實現即時數據採集、分析和可視化展示。",
+                "url": "https://github.com/eqwgeryfgbdf/SmartHome",
+                "stars": 0,
+                "forks": 0,
+                "language": "Python/C++",
+                "topics": ["IoT", "環境監測", "數據分析", "即時監控"]
+            }
+        ],
+        "projectVideos": [
+            {
+                "title": "智慧家居環境監測系統展示",
+                "url": "https://www.youtube.com/embed/MziUm7HB__E",
+                "description": "展示智慧家居環境監測系統的功能特點和實際應用場景，包含即時數據監測、異常警報和數據分析等核心功能。"
+            },
+            {
+                "title": "手語翻譯系統展示",
+                "url": "https://www.youtube.com/embed/your-video-id-2",
+                "description": "基於骨架物件辨識的多使用者即時英文拼字翻譯手語系統，展示系統的即時辨識和翻譯功能。"
+            }
+        ]
+    };
+
+    // 載入個人資料
+    function loadProfileData() {
+        const data = profileData;
+        
+        // 基本資料
+        document.getElementById('profile-name').textContent = data.basicInfo.name;
+        document.getElementById('profile-title').textContent = data.basicInfo.title || '軟體工程師';
+        document.getElementById('profile-avatar').src = data.basicInfo.avatar;
+        document.getElementById('profile-location').innerHTML = `📍 ${data.basicInfo.location}`;
+        document.getElementById('profile-contact').innerHTML = `
+                📧 ${data.basicInfo.email}<br>
+                📱 ${data.basicInfo.phone}
+            `;
+        document.getElementById('profile-objective').textContent = data.basicInfo.objective;
+        document.getElementById('profile-introduction').textContent = data.basicInfo.introduction;
+
+        // 社交連結
+        document.getElementById('github-link').href = data.basicInfo.github;
+
+        // 教育經歷
+        const educationHtml = data.education.map(edu => `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">${edu.school}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${edu.degree} - ${edu.major}</h6>
+                        <p class="card-text">
+                            <small class="text-muted">${edu.startDate} - ${edu.endDate}</small><br>
+                            GPA: ${edu.gpa}
+                        </p>
+                        ${edu.honors.length ? `
+                            <p class="card-text">
+                                <strong>榮譽：</strong><br>
+                                <ul class="list-unstyled">
+                                    ${edu.honors.map(honor => `<li>• ${honor}</li>`).join('')}
+                                </ul>
+                            </p>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        document.getElementById('education').innerHTML = educationHtml;
+
+        // 工作經驗
+        const experienceHtml = data.experience.map(exp => `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">${exp.company}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${exp.position}</h6>
+                        <p class="card-text">
+                            <small class="text-muted">${exp.startDate} - ${exp.endDate}</small>
+                        </p>
+                        ${exp.description ? `<p class="card-text">${exp.description}</p>` : ''}
+                        ${exp.achievements.length ? `
+                            <strong>工作內容：</strong>
+                            <ul class="list-unstyled mt-2">
+                                ${exp.achievements.map(item => `<li>✓ ${item}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        document.getElementById('experience').innerHTML = experienceHtml;
+
+        // 專案經驗
+        const projectsHtml = data.projects.map(project => `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">${project.name}</h5>
+                        <p class="card-text">${project.description}</p>
+                        <p class="card-text">
+                            <small class="text-muted">使用技術：${project.technologies.join(', ')}</small>
+                        </p>
+                        ${project.achievements.length ? `
+                            <strong>主要成就：</strong>
+                            <ul class="list-unstyled mt-2">
+                                ${project.achievements.map(achievement => `<li>• ${achievement}</li>`).join('')}
+                            </ul>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        document.getElementById('projects').innerHTML = projectsHtml;
+
+        // 技能
+        document.getElementById('technical-skills').innerHTML = data.skills.technical.map(skill =>
+            `<span class="skill-tag">${skill}</span>`
+        ).join('');
+        document.getElementById('languages').innerHTML = data.skills.languages.map(lang =>
+            `<span class="skill-tag">${lang}</span>`
+        ).join('');
+        document.getElementById('tools').innerHTML = data.skills.tools.map(tool =>
+            `<span class="skill-tag">${tool}</span>`
+        ).join('');
+        document.getElementById('soft-skills').innerHTML = data.skills.softSkills.map(skill =>
+            `<p class="card-text">${skill}</p>`
+        ).join('');
+
+        // GitHub 項目
+        const githubProjectsHtml = data.githubProjects.map(project => `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="card-title">
+                                    📁 ${project.name}
+                                </h5>
+                                <p class="card-text">${project.description}</p>
+                            </div>
+                            <div class="project-links">
+                                <a href="${project.url}" target="_blank" class="btn-outline-primary">
+                                    🔗 查看專案
+                                </a>
+                            </div>
+                        </div>
+                        <div class="github-stats">
+                            <span>⭐ ${project.stars}</span>
+                            <span>🔄 ${project.forks}</span>
+                            <span>💻 ${project.language}</span>
+                        </div>
+                        ${project.topics ? `
+                            <div class="mt-2">
+                                ${project.topics.map(topic => `
+                                    <span class="skill-tag">${topic}</span>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        document.getElementById('github-projects').innerHTML = githubProjectsHtml;
+
+        // 作品影片
+        const videosHtml = data.projectVideos.map(video => `
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${video.title}</h5>
+                            <div class="video-container">
+                                <iframe 
+                                    src="${video.url}" 
+                                    title="${video.title}"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="card-text mt-2">${video.description}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        document.getElementById('project-videos').innerHTML = videosHtml;
+
+        // 證照
+        const certificationsHtml = data.certifications.map(cert => `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">${cert.name}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${cert.issuer}</h6>
+                        <p class="card-text">
+                            <small class="text-muted">取得日期：${cert.date}</small>
+                        </p>
+                        ${cert.credentialId ? `
+                            <a href="${cert.credentialId}" class="btn-outline-primary" target="_blank">
+                                📄 查看證書
+                            </a>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        document.getElementById('certifications').innerHTML = certificationsHtml;
+
+        // 競賽經歷
+        const competitionsHtml = data.competitions.slice(0, 3).map(comp => `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">${comp.name_zh || comp.name}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${comp.organizer_zh || comp.organizer}</h6>
+                        <p class="card-text">
+                            <small class="text-muted">${comp.date}</small><br>
+                            <strong>成就：</strong>${comp.achievement_zh || comp.achievement}
+                        </p>
+                        <p class="card-text">${comp.description_zh ? comp.description_zh.replace(/\n/g, '<br>') : comp.description.replace(/\n/g, '<br>')}</p>
+                        <a href="awards.html" class="btn-outline-primary">
+                            🏆 查看證書
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        document.getElementById('competitions').innerHTML = competitionsHtml;
+    }
+
+    // 頁面載入完成後執行
+    document.addEventListener('DOMContentLoaded', loadProfileData);
+</script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>獎狀與證書 - 龍禹丞</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #D4C9BE;
+            color: #030303;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        .header {
+            background: linear-gradient(135deg, #123458 0%, #030303 100%);
+            color: #F1EFEC;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .back-btn {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background-color: #123458;
+            color: #F1EFEC;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        .back-btn:hover {
+            background-color: #030303;
+            transform: translateY(-2px);
+            color: #F1EFEC;
+        }
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            color: #123458;
+            border-bottom: 2px solid #123458;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .award-card {
+            background-color: #F1EFEC;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(3, 3, 3, 0.1);
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .award-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(3, 3, 3, 0.2);
+        }
+        .award-title {
+            color: #123458;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        .award-subtitle {
+            color: #030303;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .award-date {
+            color: #030303;
+            opacity: 0.7;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .award-description {
+            color: #030303;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .award-link {
+            display: inline-block;
+            background-color: #123458;
+            color: #F1EFEC;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .award-link:hover {
+            background-color: #030303;
+            transform: translateY(-2px);
+            color: #F1EFEC;
+        }
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .cert-card {
+            background-color: #F1EFEC;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(3, 3, 3, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(3, 3, 3, 0.2);
+        }
+        .cert-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #123458;
+        }
+        .cert-title {
+            color: #123458;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .cert-issuer {
+            color: #030303;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .cert-date {
+            color: #030303;
+            opacity: 0.7;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .cert-link {
+            display: inline-block;
+            background-color: #123458;
+            color: #F1EFEC;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .cert-link:hover {
+            background-color: #030303;
+            transform: translateY(-2px);
+            color: #F1EFEC;
+        }
+        @media (max-width: 768px) {
+            .back-btn {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 1rem;
+                display: inline-block;
+            }
+            .header h1 { font-size: 2rem; }
+            .awards-grid, .cert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="profile.html" class="back-btn">← 返回個人檔案</a>
+    
+    <div class="header">
+        <div class="container">
+            <h1>🏆 獎狀與證書</h1>
+            <p>我的競賽成就與專業認證</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">競賽獎狀</h2>
+            <div class="awards-grid" id="awards-grid">
+                <!-- 競賽獎狀將由JavaScript動態生成 -->
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">專業證照</h2>
+            <div class="cert-grid" id="cert-grid">
+                <!-- 專業證照將由JavaScript動態生成 -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 競賽獎狀資料
+        const awardsData = [
+            {
+                title: "2025 E化系統創意應用競賽 - 第二名、優等獎",
+                subtitle: "E化系統創意應用競賽委員會",
+                date: "2025",
+                description: "1. 專案：「基於骨架物件辨識的多使用者即時英文拼字翻譯手語系統」\n團隊：AI(愛)不釋手就隊\n2. 專案：「結合深度學習與即時電腦視覺之進階工作坊安全智慧系統」\n團隊：小孩愛吃隊",
+                link: "data/competition_certificates/e_system_innovation/team1_ai_sign_language.pdf"
+            },
+            {
+                title: "TIRT 2023 全能機器人國際賽 - 輕量級相撲機器人組參賽",
+                subtitle: "TIRT 2023 全能機器人國際賽委員會",
+                date: "2023/10/29",
+                description: "國際賽事參與經驗，展現機器人設計與控制能力",
+                link: "data/competition_certificates/TIRT/participation_certificate_20231029.pdf"
+            },
+            {
+                title: "2023 第34屆亞洲智慧型機器人大賽 - 多項獎項",
+                subtitle: "亞洲智慧型機器人大賽委員會",
+                date: "2023",
+                description: "C05 輪型機器人橫衝直撞：第一名（A組、D組）\nC05 機器人向前衝：第一名（A組）、佳作（A組）\nA05 機器人東奔西跑：第二名（A組）、第四名（A組）、佳作（A組、D組）\nC05 輪型機器人橫衝直撞：佳作（A組）\nB05 輪型機器人橫衝直撞：佳作（A組）\nC01 機器人循跡挑戰：佳作（A組）",
+                link: "data/competition_certificates/AERC/c05_wheeled_robot_1st_a.pdf"
+            },
+            {
+                title: "2022 亞洲智慧型機器人大賽 - 第三名",
+                subtitle: "亞洲智慧型機器人大賽委員會",
+                date: "2022",
+                description: "C04 機器人向前衝：第三名（A組）",
+                link: "data/competition_certificates/AERC/c04_robot_rush_3rd_a.pdf"
+            }
+        ];
+
+        // 專業證照資料
+        const certsData = [
+            {
+                title: "電路板設計國際能力認證（專業級 Specialist）",
+                issuer: "國際認證機構",
+                date: "2024/12/28",
+                link: "data/certificates/pcb_specialist_certificate_20241228.pdf"
+            },
+            {
+                title: "TQC 專業技能認證",
+                issuer: "財團法人中華民國電腦技能基金會",
+                date: "2024",
+                link: "data/certificates/tqc_iot_certificate_20231227.jpg"
+            },
+            {
+                title: "PVQC AI 專業英文能力國際認證",
+                issuer: "財團法人中華民國電腦技能基金會",
+                date: "2024",
+                link: "data/certificates/pvqc_ai_certificate_23G.pdf"
+            }
+        ];
+
+        // 生成競賽獎狀HTML
+        function generateAwards() {
+            const awardsGrid = document.getElementById('awards-grid');
+            const awardsHtml = awardsData.map(award => `
+                <div class="award-card">
+                    <h3 class="award-title">${award.title}</h3>
+                    <p class="award-subtitle">${award.subtitle}</p>
+                    <p class="award-date">${award.date}</p>
+                    <p class="award-description">${award.description.replace(/\n/g, '<br>')}</p>
+                    <a href="${award.link}" class="award-link" target="_blank">
+                        📄 查看獎狀
+                    </a>
+                </div>
+            `).join('');
+            awardsGrid.innerHTML = awardsHtml;
+        }
+
+        // 生成專業證照HTML
+        function generateCerts() {
+            const certGrid = document.getElementById('cert-grid');
+            const certsHtml = certsData.map(cert => `
+                <div class="cert-card">
+                    <div class="cert-icon">🏅</div>
+                    <h3 class="cert-title">${cert.title}</h3>
+                    <p class="cert-issuer">${cert.issuer}</p>
+                    <p class="cert-date">取得日期：${cert.date}</p>
+                    <a href="${cert.link}" class="cert-link" target="_blank">
+                        📄 查看證書
+                    </a>
+                </div>
+            `).join('');
+            certGrid.innerHTML = certsHtml;
+        }
+
+        // 頁面載入完成後執行
+        document.addEventListener('DOMContentLoaded', () => {
+            generateAwards();
+            generateCerts();
+        });
+    </script>
+</body>
+</html>

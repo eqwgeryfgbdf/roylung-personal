@@ -1,0 +1,10 @@
+# www.robotstxt.org/
+
+# Allow crawling of all content
+User-agent: *
+Allow: /
+Disallow: /data/
+Disallow: /node_modules/
+Disallow: /js/vendor/
+
+Sitemap: https://your-domain.com/sitemap.xml
