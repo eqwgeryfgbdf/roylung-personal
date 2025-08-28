@@ -8,7 +8,7 @@
 - 📱 完全響應式設計
 - ⚡ 靜態HTML，載入速度快
 - 🔍 SEO優化
-- 🌐 適合部署到Cloudflare Pages
+- 🌐 部署在GitHub Pages
 
 ## 檔案結構
 
@@ -20,6 +20,7 @@ lung-portfolio/
 ├── 404.html           # 404錯誤頁面
 ├── robots.txt         # 搜尋引擎爬蟲設定
 ├── sitemap.xml        # 網站地圖
+├── .github/workflows/ # GitHub Actions配置
 ├── data/              # 資料檔案夾
 │   ├── photos/        # 個人照片
 │   ├── certificates/  # 證書檔案
@@ -27,29 +28,23 @@ lung-portfolio/
 └── README.md          # 專案說明
 ```
 
-## 部署到Cloudflare Pages
+## 部署到GitHub Pages
 
-### 方法1：直接上傳
+### 自動部署（推薦）
 
-1. 登入 [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. 選擇你的域名
-3. 進入 "Pages" 選項
-4. 點擊 "Create a project"
-5. 選擇 "Direct Upload"
-6. 上傳專案資料夾內容
-7. 設定建置設定（不需要建置命令）
-8. 部署完成
+1. 確保您的GitHub儲存庫已啟用GitHub Pages
+2. 進入儲存庫設定 → Pages
+3. Source選擇 "Deploy from a branch"
+4. Branch選擇 "gh-pages" 分支
+5. 每次推送到 `main` 分支時，GitHub Actions會自動部署
 
-### 方法2：GitHub整合
+### 手動部署
 
 1. 將專案推送到GitHub
-2. 在Cloudflare Pages中選擇 "Connect to Git"
-3. 選擇你的GitHub儲存庫
-4. 設定建置設定：
-   - Build command: 留空
-   - Build output directory: 留空
-   - Root directory: 留空
-5. 部署完成
+2. 進入儲存庫設定 → Pages
+3. Source選擇 "Deploy from a branch"
+4. Branch選擇 "main" 分支
+5. 點擊 "Save"
 
 ## 自訂設定
 
@@ -63,7 +58,7 @@ lung-portfolio/
 
 ### 更新網域
 
-更新 `robots.txt` 和 `sitemap.xml` 中的 `your-domain.com` 為你的實際網域。
+更新 `robots.txt` 和 `sitemap.xml` 中的網域為您的GitHub Pages網址。
 
 ## 技術特點
 
@@ -72,6 +67,7 @@ lung-portfolio/
 - **響應式設計**：支援各種裝置尺寸
 - **語義化HTML**：提升SEO和可訪問性
 - **現代CSS**：使用Flexbox和Grid佈局
+- **GitHub Actions**：自動化部署
 
 ## 瀏覽器支援
 
@@ -92,4 +88,4 @@ lung-portfolio/
 
 ---
 
-**注意**：部署前請記得更新網域設定和個人資料。
+**注意**：部署前請記得更新網域設定和個人資料。網站將自動部署到 `https://eqwgeryfgbdf.github.io/roylung-personal/`
