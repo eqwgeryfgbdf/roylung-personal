@@ -750,6 +750,9 @@
                     <a href="awards.html" class="btn btn-primary" style="animation-delay: 0.5s;">
                         🏆 查看所有獎狀
                     </a>
+                    <a href="gallery.html" class="btn btn-outline-light" style="margin-left:8px; animation-delay: 0.6s;">
+                        📸 查看活動照片
+                    </a>
                 </div>
             </section>
         </div>
@@ -1176,9 +1179,8 @@
                             <strong>成就：</strong>${comp.achievement_zh || comp.achievement}
                         </p>
                         <p class="card-text">${comp.description_zh ? comp.description_zh.replace(/\n/g, '<br>') : comp.description.replace(/\n/g, '<br>')}</p>
-                        <a href="awards.html" class="btn-outline-primary">
-                            🏆 查看證書
-                        </a>
+                        <a href="awards.html" class="btn-outline-primary">🏆 查看證書</a>
+                        <a href="gallery.html" class="btn-outline-primary" style="margin-left:8px;">📸 查看照片</a>
                     </div>
                 </div>
             `).join('');

@@ -190,40 +190,40 @@
       "impact_zh": "解決聽障人士溝通問題，提升工作場所安全性"
     },
     {
-      "name": "Kaohsiung Invention Expo - Green Idea Competition",
-      "name_zh": "高雄發明展 - 綠點子發明競賽",
-      "organizer": "Kaohsiung Invention Expo Committee",
-      "organizer_zh": "高雄發明展委員會",
-      "date": "2024",
-      "achievement": "Green Idea Award",
-      "achievement_zh": "綠點子獎",
-      "description": "Environmental Innovation Project focusing on sustainable technology solutions",
-      "description_zh": "環境創新專案，專注於永續科技解決方案",
+      "name": "7th Green Idea Invention and Design Fair",
+      "name_zh": "第七屆 Green Idea 發明設計展",
+      "organizer": "GIIDF",
+      "organizer_zh": "Green Idea Invention and Design Fair",
+      "date": "2025/08/01-02",
+      "achievement": "Titanium Prize",
+      "achievement_zh": "Titanium Prize",
+      "description": "Project: SmartCube Multidimensional Parking System (Kaohsiung, Taiwan)",
+      "description_zh": "專案：SmartCube 多維停車系統（高雄，台灣）",
       "certificate": "data/competition_certificates/invention_expo/高雄發明展/綠點子-獎狀.png",
-      "category": "環境永續發明",
-      "category_zh": "環境永續發明",
-      "team_size": "3-5人",
-      "technologies": ["環保材料", "永續設計", "創新技術"],
-      "impact": "促進環境保護與永續發展",
-      "impact_zh": "促進環境保護與永續發展"
+      "category": "Invention & Design",
+      "category_zh": "發明與設計",
+      "team_size": "6人",
+      "technologies": ["機構設計", "嵌入式系統", "控制系統"],
+      "impact": "創新智慧停車解決方案，提升空間使用效率",
+      "impact_zh": "創新智慧停車解決方案，提升空間使用效率"
     },
     {
-      "name": "Metro Hackathon Cup",
-      "name_zh": "捷運盃黑客松競賽",
-      "organizer": "Taipei Metro",
-      "organizer_zh": "台北捷運公司",
-      "date": "2024",
-      "achievement": "Participation Certificate",
-      "achievement_zh": "參賽證明",
-      "description": "Smart Transportation Innovation Project for Taipei Metro System",
-      "description_zh": "台北捷運系統智慧交通創新專案",
+      "name": "2025 Metro Hackathon",
+      "name_zh": "2025 捷運盃黑客松（尋找黑捷客 App 競賽）",
+      "organizer": "Metro Taipei; Cathay United Bank",
+      "organizer_zh": "台北捷運; 國泰世華銀行（協辦：Acer）",
+      "date": "2025/08/30",
+      "achievement": "Second Place",
+      "achievement_zh": "亞軍",
+      "description": "Team: J-ET 我拾緣; Theme: Find the Black Passenger; Track: Design Innovation & AI Empowerment",
+      "description_zh": "隊名：捷我拾緣；主題：尋找黑捷客；賽道：設計創新・AI賦能",
       "certificate": "data/competition_certificates/metro_hackathon/黑客松-捷運盃-獎狀.png",
-      "category": "智慧交通創新",
-      "category_zh": "智慧交通創新",
-      "team_size": "4-6人",
-      "technologies": ["IoT", "智慧交通", "數據分析", "行動應用"],
-      "impact": "改善大眾運輸系統效率與使用者體驗",
-      "impact_zh": "改善大眾運輸系統效率與使用者體驗"
+      "category": "Smart Mobility & AI",
+      "category_zh": "智慧交通與AI",
+      "team_size": "6人",
+      "technologies": ["行動應用", "AI", "資料分析", "雲端服務"],
+      "impact": "協助捷運系統偵測與改善逃票問題",
+      "impact_zh": "協助捷運系統偵測與改善逃票問題"
     },
     {
       "name": "TIRT 2023 International All-Around Robot Competition",
@@ -359,6 +359,68 @@
           "certificate": "data/competition_certificates/AERC/c04_robot_rush_3rd_a.pdf"
         }
       ]
+    }
+  ],
+  "competitionPhotos": [
+    {
+      "title": "2025 E化系統創意應用競賽團隊合照",
+      "title_zh": "2025 E化系統創意應用競賽團隊合照",
+      "description": "AI(愛)不釋手就隊與小孩愛吃隊的競賽團隊合照，展現團隊合作精神",
+      "description_zh": "AI(愛)不釋手就隊與小孩愛吃隊的競賽團隊合照，展現團隊合作精神",
+      "image": "data/competition_certificates/competition_photo_2025.jpeg",
+      "date": "2025",
+      "competition": "E化系統創意應用競賽",
+      "team_members": "4-6人團隊"
+    },
+    {
+      "title": "研討會活動照片",
+      "title_zh": "研討會活動照片",
+      "description": "研討會/學術交流活動現場照片",
+      "description_zh": "研討會/學術交流活動現場照片",
+      "image": "data/events/conferences/WASN-2025.jpeg",
+      "date": "2025",
+      "competition": "研討會",
+      "team_members": "—"
+    },
+    {
+      "title": "Green Idea 發明設計展活動照片",
+      "title_zh": "Green Idea 發明設計展活動照片",
+      "description": "GIIDF 現場照片，SmartCube 多維停車系統展示",
+      "description_zh": "GIIDF 現場照片，SmartCube 多維停車系統展示",
+      "image": "data/competition_certificates/invention_expo/高雄發明展/高雄發明展-1.jpg",
+      "date": "2025/08/01-02",
+      "competition": "Green Idea Invention and Design Fair",
+      "team_members": "6人團隊"
+    },
+    {
+      "title": "Green Idea 發明設計展團隊展示",
+      "title_zh": "Green Idea 發明設計展團隊展示",
+      "description": "GIIDF 團隊展示 SmartCube 多維停車系統",
+      "description_zh": "GIIDF 團隊展示 SmartCube 多維停車系統",
+      "image": "data/competition_certificates/invention_expo/高雄發明展/高雄發明展-2.jpg",
+      "date": "2025/08/01-02",
+      "competition": "Green Idea Invention and Design Fair",
+      "team_members": "6人團隊"
+    },
+    {
+      "title": "捷運盃黑客松團隊合照",
+      "title_zh": "捷運盃黑客松團隊合照",
+      "description": "2025 捷運盃黑客松（尋找黑捷客）競賽團隊合照",
+      "description_zh": "2025 捷運盃黑客松（尋找黑捷客）競賽團隊合照",
+      "image": "data/competition_certificates/metro_hackathon/黑客松-捷運盃-合照.jpeg",
+      "date": "2025/08/30",
+      "competition": "捷運盃黑客松",
+      "team_members": "6人團隊"
+    },
+    {
+      "title": "TIRT全能機器人國際賽競賽照片",
+      "title_zh": "TIRT全能機器人國際賽競賽照片",
+      "description": "TIRT全能機器人國際賽競賽現場照片，輕量級相撲機器人組別",
+      "description_zh": "TIRT全能機器人國際賽競賽現場照片，輕量級相撲機器人組別",
+      "image": "data/competition_certificates/TIRT/competition_photo.jpg",
+      "date": "2023/10/29",
+      "competition": "TIRT全能機器人國際賽",
+      "team_members": "2-3人團隊"
     }
   ],
   "githubProjects": [
