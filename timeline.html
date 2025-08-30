@@ -26,18 +26,25 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 18px 16px; }
         .title { margin: 0 0 6px 0; font-size: 26px; letter-spacing: .5px; }
         .subtitle { margin: 0; opacity: .9; }
-        .toolbar { display:flex; gap:10px; flex-wrap: wrap; margin-top: 14px; }
+        .toolbar { display:flex; gap:10px; flex-wrap: wrap; margin-top: 14px; align-items: center; }
         .btn { border:0; background: var(--primary-color); color: var(--light-color); padding:8px 14px; border-radius: 24px; cursor:pointer; box-shadow: var(--shadow); text-decoration: none; display:inline-block; }
         .btn.secondary { background: transparent; color: var(--light-color); border: 1px solid rgba(255,255,255,.6); }
+        .input, .select { padding:8px 12px; border-radius: 20px; border: 1px solid rgba(3,3,3,.2); background: #fff; box-shadow: var(--shadow); }
+        .input { min-width: 220px; }
 
         /* Timeline */
         .timeline { position: relative; margin: 20px 0; }
         .timeline::before { content:""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: var(--line); transform: translateX(-50%); }
-        .year { position: relative; text-align: center; margin: 24px 0; }
-        .year .badge { display:inline-block; background: var(--secondary-color); color: var(--light-color); padding: 6px 12px; border-radius: 18px; box-shadow: var(--shadow); font-weight: 700; letter-spacing: .5px; }
-        .item { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; margin: 18px 0; }
+        .year { position: relative; text-align: center; margin: 24px 0 8px; }
+        .year .badge { display:inline-flex; align-items: center; gap:6px; background: var(--secondary-color); color: var(--light-color); padding: 6px 12px; border-radius: 18px; box-shadow: var(--shadow); font-weight: 700; letter-spacing: .5px; cursor: pointer; user-select: none; }
+        .year .caret { display:inline-block; width: 0; height: 0; border-left:6px solid transparent; border-right:6px solid transparent; border-top:7px solid #fff; transition: transform .2s ease; }
+        .year.collapsed .caret { transform: rotate(-90deg); }
+        .group { transition: grid-template-rows .25s ease; }
+        .item { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; margin: 18px 0; opacity: 0; transform: translateY(12px); filter: saturate(.9); }
+        .item.in-view { opacity: 1; transform: translateY(0); transition: opacity .5s ease, transform .5s ease, filter .3s ease; }
+        .item:hover { filter: saturate(1.05); }
         .card { background: var(--light-color); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
-        .card .media { position: relative; padding-top: 56%; background: #eae7e3; }
+        .card .media { position: relative; padding-top: 56%; background: #eae7e3; cursor: zoom-in; }
         .card .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
         .card .body { padding: 12px 14px; }
         .card .title { font-size: 18px; margin: 0 0 4px 0; color: var(--secondary-color); }
@@ -53,15 +60,27 @@
         .links { margin-top: 6px; display: flex; gap: 10px; }
         .link { text-decoration: none; color: var(--primary-color); font-weight: 600; }
 
+        /* Floating year indicator */
+        .year-indicator { position: fixed; top: 76px; right: 16px; background: var(--secondary-color); color:#fff; padding:6px 10px; border-radius: 16px; box-shadow: var(--shadow); opacity:.9; font-weight:700; letter-spacing:.5px; z-index: 10; }
+
+        /* Lightbox */
+        .lightbox { position: fixed; inset:0; background: rgba(0,0,0,.8); display:flex; align-items:center; justify-content:center; z-index: 100; }
+        .lightbox[hidden] { display:none; }
+        .lightbox img { max-width: 92vw; max-height: 90vh; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+
         @media (max-width: 900px){
             .timeline::before { left: 18px; transform: none; }
             .item { grid-template-columns: 36px 1fr; }
             .left .content, .right .content { grid-column: 2 / 3; }
             .left .spacer, .right .spacer { display:none; }
             .dot { left: 18px; }
+            .year-indicator { top: 68px; right: 10px; }
         }
     </style>
     <script>
+        let ALL_PHOTOS = [];
+        let FILTER = { q: '', year: 'ALL' };
+
         function parseSortKey(str){
             if(!str) return 0;
             const m = String(str).match(/(20\d{2})(?:\/(\d{1,2})(?:\/(\d{1,2}))?)?/);
@@ -87,7 +106,12 @@
             }));
             // 新→舊
             photos.sort((a,b)=> b.sort - a.sort);
-            render(photos);
+            ALL_PHOTOS = photos;
+            buildToolbarYears(photos);
+            applyFilters();
+            setupScrollReveal();
+            setupLightbox();
+            setupYearObserver();
         }
         function groupByYear(items){
             const map = new Map();
@@ -103,15 +127,16 @@
             const groups = groupByYear(items);
             let html = '';
             groups.forEach(([year, list])=>{
-                html += `<div class="year"><span class="badge">${year}</span></div>`;
+                html += `<div class="year" data-year="${year}"><span class="badge" data-action="toggle-year"><span class="caret"></span>${year}</span></div>`;
+                html += `<div class="group" data-year-group="${year}">`;
                 list.forEach((it, idx)=>{
                     const side = idx % 2 === 0 ? 'left' : 'right';
                     html += `
-                    <div class="item ${side}">
+                    <div class="item ${side}" data-date="${it.date}" data-source="${it.source||''}">
                         <div class="spacer"></div>
                         <div class="content">
                             <div class="card">
-                                <div class="media"><img src="${it.img}" alt="${it.title}"></div>
+                                <div class="media" data-img="${it.img}" data-title="${it.title}"><img src="${it.img}" alt="${it.title}" loading="lazy"></div>
                                 <div class="body">
                                     <div class="title">${it.title}</div>
                                     <div class="meta">${it.date} · ${it.source || ''}</div>
@@ -122,10 +147,103 @@
                         <div class="dot"></div>
                     </div>`;
                 });
+                html += `</div>`;
             });
             timeline.innerHTML = html;
+            // Wire year toggle
+            timeline.addEventListener('click', (e)=>{
+                const badge = e.target.closest('[data-action="toggle-year"]');
+                if(!badge) return;
+                const yearEl = badge.closest('.year');
+                const y = yearEl?.dataset.year;
+                const group = timeline.querySelector(`[data-year-group="${CSS.escape(y)}"]`);
+                if(!group) return;
+                const collapsed = yearEl.classList.toggle('collapsed');
+                group.style.display = collapsed ? 'none' : '';
+            });
+            // Reconnect scroll reveal after rerender
+            setupScrollReveal(true);
         }
-        document.addEventListener('DOMContentLoaded', load);
+        function buildToolbarYears(photos){
+            const years = Array.from(new Set(photos.map(p=>p.year))).sort((a,b)=> +b - +a);
+            const sel = document.getElementById('year-select');
+            if(!sel) return;
+            sel.innerHTML = `<option value="ALL">全部年份</option>` + years.map(y=>`<option value="${y}">${y}</option>`).join('');
+        }
+        function applyFilters(){
+            let list = ALL_PHOTOS.slice();
+            if(FILTER.year !== 'ALL') list = list.filter(p=> String(p.year) === String(FILTER.year));
+            if(FILTER.q){
+                const q = FILTER.q.trim().toLowerCase();
+                list = list.filter(p=>
+                    (p.title||'').toLowerCase().includes(q) ||
+                    (p.desc||'').toLowerCase().includes(q) ||
+                    (p.source||'').toLowerCase().includes(q) ||
+                    (p.date||'').toLowerCase().includes(q)
+                );
+            }
+            render(list);
+        }
+        function debounce(fn, ms){
+            let t; return (...args)=>{ clearTimeout(t); t = setTimeout(()=>fn(...args), ms); };
+        }
+        function setupToolbarHandlers(){
+            const search = document.getElementById('search');
+            const yearSel = document.getElementById('year-select');
+            const expandAll = document.getElementById('expand-all');
+            const collapseAll = document.getElementById('collapse-all');
+            const toCurrent = document.getElementById('to-current');
+            if(search){ search.addEventListener('input', debounce((e)=>{ FILTER.q = e.target.value; applyFilters(); }, 200)); }
+            if(yearSel){ yearSel.addEventListener('change', (e)=>{ FILTER.year = e.target.value; applyFilters(); }); }
+            if(expandAll){ expandAll.addEventListener('click', ()=>{
+                document.querySelectorAll('.year').forEach(y=> y.classList.remove('collapsed'));
+                document.querySelectorAll('[data-year-group]').forEach(g=> g.style.display='');
+            }); }
+            if(collapseAll){ collapseAll.addEventListener('click', ()=>{
+                document.querySelectorAll('.year').forEach(y=> y.classList.add('collapsed'));
+                document.querySelectorAll('[data-year-group]').forEach(g=> g.style.display='none');
+            }); }
+            if(toCurrent){ toCurrent.addEventListener('click', ()=>{
+                const thisYear = new Date().getFullYear();
+                const el = document.querySelector(`.year[data-year="${thisYear}"]`) || document.querySelector('.year');
+                if(el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+            }); }
+        }
+        let itemObserver;
+        function setupScrollReveal(reconnect=false){
+            if(reconnect && itemObserver){ itemObserver.disconnect(); }
+            const items = document.querySelectorAll('.item');
+            itemObserver = new IntersectionObserver((entries)=>{
+                for(const e of entries){ if(e.isIntersecting){ e.target.classList.add('in-view'); itemObserver.unobserve(e.target); } }
+            }, { threshold: 0.12 });
+            items.forEach(it=> itemObserver.observe(it));
+        }
+        function setupLightbox(){
+            const lb = document.getElementById('lightbox');
+            const imgEl = lb.querySelector('img');
+            document.body.addEventListener('click', (e)=>{
+                const media = e.target.closest('.media');
+                if(!media) return;
+                const src = media.dataset.img; const alt = media.dataset.title || '';
+                imgEl.src = src; imgEl.alt = alt; lb.hidden = false; document.body.style.overflow='hidden';
+            });
+            lb.addEventListener('click', ()=>{ lb.hidden = true; imgEl.src=''; document.body.style.overflow=''; });
+            document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !lb.hidden){ lb.click(); } });
+        }
+        function setupYearObserver(){
+            const indicator = document.getElementById('year-indicator');
+            const yearEls = document.querySelectorAll('.year');
+            const yObserver = new IntersectionObserver((entries)=>{
+                // Pick the entry nearest to top in viewport and isIntersecting
+                const visible = entries.filter(en=> en.isIntersecting).sort((a,b)=> a.boundingClientRect.top - b.boundingClientRect.top);
+                if(visible[0]){
+                    const y = visible[0].target.dataset.year;
+                    if(y) indicator.textContent = y;
+                }
+            }, { root: null, threshold: 0, rootMargin: '-64px 0px -80% 0px' });
+            yearEls.forEach(y=> yObserver.observe(y));
+        }
+        document.addEventListener('DOMContentLoaded', ()=>{ setupToolbarHandlers(); load(); });
     </script>
 </head>
 <body>
@@ -134,10 +252,21 @@
             <h1 class="title">活動時間軸</h1>
             <p class="subtitle">以時間軸呈現競賽與研討會照片</p>
             <!-- 導覽已移至全站導覽列 -->
+            <div class="toolbar">
+                <input id="search" class="input" type="search" placeholder="搜尋標題、說明或競賽…">
+                <select id="year-select" class="select"></select>
+                <button id="expand-all" class="btn secondary">展開全部</button>
+                <button id="collapse-all" class="btn secondary">收合全部</button>
+                <button id="to-current" class="btn">回到今年</button>
+            </div>
         </div>
     </div>
     <div class="container">
         <div class="timeline"></div>
+    </div>
+    <div id="year-indicator" class="year-indicator">—</div>
+    <div id="lightbox" class="lightbox" hidden>
+        <img alt="">
     </div>
 </body>
 </html>
