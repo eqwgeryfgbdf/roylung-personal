@@ -181,7 +181,49 @@
       "achievement_zh": "第二名、優等獎",
       "description": "1. Project: 'Multi-user Real-time English Spelling Translation Sign Language System Based on Skeleton Object Recognition'\nTeam: AI Love Sign Language\n2. Project: 'Advanced Workshop Safety Intelligence System Combining Deep Learning and Real-time Computer Vision'\nTeam: Safety First",
       "description_zh": "1. 專案：「基於骨架物件辨識的多使用者即時英文拼字翻譯手語系統」\n團隊：AI(愛)不釋手就隊\n2. 專案：「結合深度學習與即時電腦視覺之進階工作坊安全智慧系統」\n團隊：小孩愛吃隊",
-      "certificate": "data/competition_certificates/e_system_innovation/team1_ai_sign_language.pdf"
+      "certificate": "data/competition_certificates/e_system_innovation/team1_ai_sign_language.pdf",
+      "category": "AI應用與系統創新",
+      "category_zh": "AI應用與系統創新",
+      "team_size": "4-6人",
+      "technologies": ["Python", "OpenCV", "TensorFlow", "深度學習", "電腦視覺", "即時處理"],
+      "impact": "解決聽障人士溝通問題，提升工作場所安全性",
+      "impact_zh": "解決聽障人士溝通問題，提升工作場所安全性"
+    },
+    {
+      "name": "Kaohsiung Invention Expo - Green Idea Competition",
+      "name_zh": "高雄發明展 - 綠點子發明競賽",
+      "organizer": "Kaohsiung Invention Expo Committee",
+      "organizer_zh": "高雄發明展委員會",
+      "date": "2024",
+      "achievement": "Green Idea Award",
+      "achievement_zh": "綠點子獎",
+      "description": "Environmental Innovation Project focusing on sustainable technology solutions",
+      "description_zh": "環境創新專案，專注於永續科技解決方案",
+      "certificate": "data/competition_certificates/invention_expo/高雄發明展/綠點子-獎狀.png",
+      "category": "環境永續發明",
+      "category_zh": "環境永續發明",
+      "team_size": "3-5人",
+      "technologies": ["環保材料", "永續設計", "創新技術"],
+      "impact": "促進環境保護與永續發展",
+      "impact_zh": "促進環境保護與永續發展"
+    },
+    {
+      "name": "Metro Hackathon Cup",
+      "name_zh": "捷運盃黑客松競賽",
+      "organizer": "Taipei Metro",
+      "organizer_zh": "台北捷運公司",
+      "date": "2024",
+      "achievement": "Participation Certificate",
+      "achievement_zh": "參賽證明",
+      "description": "Smart Transportation Innovation Project for Taipei Metro System",
+      "description_zh": "台北捷運系統智慧交通創新專案",
+      "certificate": "data/competition_certificates/metro_hackathon/黑客松-捷運盃-獎狀.png",
+      "category": "智慧交通創新",
+      "category_zh": "智慧交通創新",
+      "team_size": "4-6人",
+      "technologies": ["IoT", "智慧交通", "數據分析", "行動應用"],
+      "impact": "改善大眾運輸系統效率與使用者體驗",
+      "impact_zh": "改善大眾運輸系統效率與使用者體驗"
     },
     {
       "name": "TIRT 2023 International All-Around Robot Competition",
@@ -191,9 +233,15 @@
       "date": "2023/10/29",
       "achievement": "Lightweight Sumo Robot Division Participant",
       "achievement_zh": "輕量級相撲機器人組參賽",
-      "description": "International Competition Participation",
-      "description_zh": "國際賽事參與經驗",
-      "certificate": "data/competition_certificates/TIRT/participation_certificate_20231029.pdf"
+      "description": "International Competition Participation in Lightweight Sumo Robot Category",
+      "description_zh": "國際賽事參與經驗，輕量級相撲機器人組別",
+      "certificate": "data/competition_certificates/TIRT/participation_certificate_20231029.pdf",
+      "category": "機器人競賽",
+      "category_zh": "機器人競賽",
+      "team_size": "2-3人",
+      "technologies": ["Arduino", "感測器", "馬達控制", "機器人設計"],
+      "impact": "國際競賽經驗，提升機器人設計與控制能力",
+      "impact_zh": "國際競賽經驗，提升機器人設計與控制能力"
     },
     {
       "name": "2023 34th AERC Asia Robot Competition",
@@ -205,7 +253,84 @@
       "achievement_zh": "多項獎項",
       "description": "1. C05 Wheeled Robot Challenge: First Place (Group A, Group D)\n2. C05 Robot Rush: First Place (Group A), Honorable Mention (Group A)\n3. A05 Robot Navigation: Second Place (Group A), Fourth Place (Group A), Honorable Mention (Group A, Group D)\n4. C05 Wheeled Robot Challenge: Honorable Mention (Group A)\n5. B05 Wheeled Robot Challenge: Honorable Mention (Group A)\n6. C01 Robot Line Tracking: Honorable Mention (Group A)",
       "description_zh": "1. C05 輪型機器人橫衝直撞：第一名（A組、D組）\n2. C05 機器人向前衝：第一名（A組）、佳作（A組）\n3. A05 機器人東奔西跑：第二名（A組）、第四名（A組）、佳作（A組、D組）\n4. C05 輪型機器人橫衝直撞：佳作（A組）\n5. B05 輪型機器人橫衝直撞：佳作（A組）\n6. C01 機器人循跡挑戰：佳作（A組）",
-      "certificate": "data/competition_certificates/AERC/c05_wheeled_robot_1st_a.pdf"
+      "certificate": "data/competition_certificates/AERC/c05_wheeled_robot_1st_a.pdf",
+      "category": "智慧型機器人競賽",
+      "category_zh": "智慧型機器人競賽",
+      "team_size": "2-4人",
+      "technologies": ["Arduino", "感測器", "馬達控制", "程式設計", "機器人設計"],
+      "impact": "多項競賽獲獎，展現機器人設計與控制能力",
+      "impact_zh": "多項競賽獲獎，展現機器人設計與控制能力",
+      "competition_level": "亞洲級",
+      "competition_level_zh": "亞洲級",
+      "total_awards": 8,
+      "award_details": [
+        {
+          "category": "C05 輪型機器人橫衝直撞",
+          "award": "第一名",
+          "group": "A組、D組",
+          "certificate": "data/competition_certificates/AERC/c05_wheeled_robot_1st_a.pdf"
+        },
+        {
+          "category": "C05 機器人向前衝",
+          "award": "第一名",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/c05_robot_rush_1st_a.pdf"
+        },
+        {
+          "category": "C05 機器人向前衝",
+          "award": "佳作",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/c05_robot_rush_hm_a.pdf"
+        },
+        {
+          "category": "A05 機器人東奔西跑",
+          "award": "第二名",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/a05_navigation_2nd_a.pdf"
+        },
+        {
+          "category": "A05 機器人東奔西跑",
+          "award": "第四名",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/a05_navigation_4th_a.pdf"
+        },
+        {
+          "category": "A05 機器人東奔西跑",
+          "award": "佳作",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/a05_navigation_hm_a.pdf"
+        },
+        {
+          "category": "A05 機器人東奔西跑",
+          "award": "佳作",
+          "group": "D組",
+          "certificate": "data/competition_certificates/AERC/a05_navigation_hm_d.pdf"
+        },
+        {
+          "category": "C05 輪型機器人橫衝直撞",
+          "award": "佳作",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/c05_wheeled_robot_hm_a.pdf"
+        },
+        {
+          "category": "B05 輪型機器人橫衝直撞",
+          "award": "佳作",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/b05_wheeled_robot_hm_a1.pdf"
+        },
+        {
+          "category": "B05 輪型機器人橫衝直撞",
+          "award": "佳作",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/b05_wheeled_robot_hm_a2.pdf"
+        },
+        {
+          "category": "C01 機器人循跡挑戰",
+          "award": "佳作",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/c01_line_tracking_hm_a.pdf"
+        }
+      ]
     },
     {
       "name": "2022 AERC Asia Robot Competition",
@@ -217,7 +342,23 @@
       "achievement_zh": "第三名",
       "description": "C04 Robot Rush: Third Place (Group A)",
       "description_zh": "C04 機器人向前衝：第三名（A組）",
-      "certificate": "data/competition_certificates/AERC/c04_robot_rush_3rd_a.pdf"
+      "certificate": "data/competition_certificates/AERC/c04_robot_rush_3rd_a.pdf",
+      "category": "智慧型機器人競賽",
+      "category_zh": "智慧型機器人競賽",
+      "team_size": "2-4人",
+      "technologies": ["Arduino", "感測器", "馬達控制", "程式設計"],
+      "impact": "首次參賽即獲獎，建立機器人競賽基礎",
+      "impact_zh": "首次參賽即獲獎，建立機器人競賽基礎",
+      "competition_level": "亞洲級",
+      "competition_level_zh": "亞洲級",
+      "award_details": [
+        {
+          "category": "C04 機器人向前衝",
+          "award": "第三名",
+          "group": "A組",
+          "certificate": "data/competition_certificates/AERC/c04_robot_rush_3rd_a.pdf"
+        }
+      ]
     }
   ],
   "githubProjects": [
