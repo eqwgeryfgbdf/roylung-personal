@@ -363,23 +363,23 @@
   ],
   "competitionPhotos": [
     {
-      "title": "2025 E化系統創意應用競賽團隊合照",
-      "title_zh": "2025 E化系統創意應用競賽團隊合照",
-      "description": "AI(愛)不釋手就隊與小孩愛吃隊的競賽團隊合照，展現團隊合作精神",
-      "description_zh": "AI(愛)不釋手就隊與小孩愛吃隊的競賽團隊合照，展現團隊合作精神",
-      "image": "data/competition_certificates/competition_photo_2025.jpeg",
+      "title": "2025 團隊合照",
+      "title_zh": "2025 團隊合照",
+      "description": "Team photo in 2025, capturing teamwork and collaboration.",
+      "description_zh": "2025 年度團隊合照，紀錄團隊合作與默契。",
+      "image": "data/photos/team/competition_photo_2025.jpeg",
       "date": "2025",
-      "competition": "E化系統創意應用競賽",
-      "team_members": "4-6人團隊"
+      "competition": "團隊合照",
+      "team_members": "6人團隊"
     },
     {
-      "title": "研討會活動照片",
-      "title_zh": "研討會活動照片",
-      "description": "研討會/學術交流活動現場照片",
-      "description_zh": "研討會/學術交流活動現場照片",
+      "title": "WASN 2025 Conference Photo",
+      "title_zh": "WASN 2025 研討會活動照片",
+      "description": "Participation at WASN 2025, National Taiwan University, Taipei.",
+      "description_zh": "於台灣大學（台北）參與 WASN 2025 研討會之活動照片。",
       "image": "data/events/conferences/WASN-2025.jpeg",
-      "date": "2025",
-      "competition": "研討會",
+      "date": "2025/08/25",
+      "competition": "研討會（WASN 2025）",
       "team_members": "—"
     },
     {
@@ -455,4 +455,40 @@
       "description": "基於骨架物件辨識的多使用者即時英文拼字翻譯手語系統，展示系統的即時辨識和翻譯功能。"
     }
   ]
-} 
+  ,
+  "conferences": [
+    {
+      "name": "WASN 2025: Wireless, Ad-hoc, and Sensor Networks",
+      "name_zh": "WASN 2025 無線、隨意及感測網路國際研討會",
+      "acronym": "WASN 2025",
+      "url": "https://mcwasn2025.ntu.edu.tw/",
+      "date": "2025/08/25",
+      "location": "National Taiwan University, Taipei, Taiwan",
+      "location_zh": "國立臺灣大學（台北市）",
+      "guidance": "National Science and Technology Council (NSTC)",
+      "guidance_zh": "國家科學及技術委員會",
+      "organizer": "Department of Computer Science and Information Engineering, National Taiwan University",
+      "organizer_zh": "國立臺灣大學 資訊工程學系",
+      "co_organizers_zh": [
+        "中央研究院 資訊科技創新研究中心",
+        "臺大 IoX 創新研究中心",
+        "國科會工程處 工程科技推展中心",
+        "台灣雲端物聯網產業協會"
+      ],
+      "sponsors_zh": [
+        "中華電信研究院"
+      ],
+      "role": "Presenter (Poster)",
+      "role_zh": "論文海報發表",
+      "poster_number": "56",
+      "paper_title": "Sign Language Translation via Real-time Semantic Construction Based on Multi-Modal Visual Perception Network",
+      "paper_title_zh": "植基於多模態視覺感知網路於即時語意建構之手語轉譯研究",
+      "award": "Honorable Mention Student Paper Award",
+      "award_zh": "佳作學生論文獎",
+      "poster_certificate": "data/events/conferences/WASN-2025/發表證明.png",
+      "award_certificate": "data/events/conferences/WASN-2025/佳作學生論文獎.jpg",
+      "description": "An international workshop focusing on wireless, ad-hoc, and sensor networks, including IoT, edge/cloud collaboration, security, and smart applications.",
+      "description_zh": "聚焦無線、隨意與感測網路（WASN）的前沿技術與應用，涵蓋物聯網、邊雲協作、資安與智慧應用等議題。"
+    }
+  ]
+}

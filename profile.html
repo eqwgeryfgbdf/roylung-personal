@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="manifest" href="site.webmanifest">
+    <script src="assets/nav.js" defer></script>
     <style>
         /* CSS 變數定義 */
         :root {
@@ -744,13 +745,14 @@
             </section>
 
             <section class="mb-5 scroll-reveal">
+                <h3 class="section-title">研討會</h3>
+                <div id="conferences"></div>
+            </section>
+
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">競賽經歷</h3>
                 <div id="competitions"></div>
-                <div class="text-center mt-3">
-                    <a href="awards.html" class="btn btn-primary" style="animation-delay: 0.5s;">🏆 查看所有獎狀</a>
-                    <a href="gallery.html" class="btn btn-outline-light" style="margin-left:8px; animation-delay: 0.6s;">📸 圖庫模式</a>
-                    <a href="timeline.html" class="btn btn-outline-light" style="margin-left:8px; animation-delay: 0.7s;">📅 時間軸</a>
-                </div>
+                <!-- 導覽移入全站導覽列 -->
             </section>
         </div>
     </div>
@@ -1164,6 +1166,35 @@
                 </div>
             `).join('');
         document.getElementById('certifications').innerHTML = certificationsHtml;
+
+        // 研討會
+        const conferences = data.conferences || [];
+        const conferencesHtml = conferences.map(conf => `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">${conf.name_zh || conf.name}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">${conf.location_zh || conf.location}</h6>
+                        <p class="card-text">
+                            <small class="text-muted">${conf.date}</small><br>
+                            <strong>主辦：</strong>${conf.organizer_zh || conf.organizer}<br>
+                            ${conf.guidance_zh ? `<strong>指導：</strong>${conf.guidance_zh}<br>` : ''}
+                            ${conf.role_zh ? `<strong>角色：</strong>${conf.role_zh}<br>` : ''}
+                            ${conf.poster_number ? `<strong>海報編號：</strong>${conf.poster_number}<br>` : ''}
+                            ${conf.paper_title_zh ? `<strong>論文題目：</strong>${conf.paper_title_zh}<br>` : ''}
+                            ${conf.award_zh ? `<strong>獲獎：</strong>${conf.award_zh}<br>` : ''}
+                        </p>
+                        ${conf.description_zh ? `<p class="card-text">${conf.description_zh}</p>` : ''}
+                        <div class="project-links">
+                            ${conf.url ? `<a href="${conf.url}" class="btn-outline-primary" target="_blank">🔗 官方網站</a>` : ''}
+                            ${conf.poster_certificate ? `<a href="${conf.poster_certificate}" class="btn-outline-primary" target="_blank" style="margin-left:8px;">📄 發表證明</a>` : ''}
+                            ${conf.award_certificate ? `<a href="${conf.award_certificate}" class="btn-outline-primary" target="_blank" style="margin-left:8px;">🏅 論文獎狀</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        if (document.getElementById('conferences')) {
+            document.getElementById('conferences').innerHTML = conferencesHtml;
+        }
 
         // 競賽經歷
         const competitionsHtml = data.competitions.slice(0, 3).map(comp => `

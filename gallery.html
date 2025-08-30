@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="manifest" href="site.webmanifest">
+    <script src="assets/nav.js" defer></script>
     <style>
         :root {
             --primary-color: #123458;
@@ -61,7 +62,7 @@
             }));
 
             // 準備資料：證書（來自 competitions 的 certificate）
-            const certs = (data.competitions || [])
+            const certsFromCompetitions = (data.competitions || [])
                 .filter(c => !!c.certificate)
                 .map(c => ({
                     type: 'certificate',
@@ -72,6 +73,33 @@
                     source: c.organizer_zh || c.organizer
                 }));
 
+            // 準備資料：研討會證書（若有）
+            const certsFromConferences = (data.conferences || []).flatMap(conf => {
+                const arr = [];
+                if (conf.poster_certificate) {
+                    arr.push({
+                        type: 'certificate',
+                        title: `${conf.name_zh || conf.name} - 發表證明` + (conf.poster_number ? `（#${conf.poster_number}）` : ''),
+                        date: conf.date,
+                        link: conf.poster_certificate,
+                        preview: /\.(png|jpg|jpeg|webp)$/i.test(conf.poster_certificate) ? conf.poster_certificate : null,
+                        source: conf.organizer_zh || conf.organizer
+                    });
+                }
+                if (conf.award_certificate) {
+                    arr.push({
+                        type: 'certificate',
+                        title: `${conf.name_zh || conf.name} - ${conf.award_zh || 'Award'}`,
+                        date: conf.date,
+                        link: conf.award_certificate,
+                        preview: /\.(png|jpg|jpeg|webp)$/i.test(conf.award_certificate) ? conf.award_certificate : null,
+                        source: conf.organizer_zh || conf.organizer
+                    });
+                }
+                return arr;
+            });
+
+            const certs = [...certsFromCompetitions, ...certsFromConferences];
             return { photos, certs };
         }
 
@@ -141,7 +169,6 @@
                 <button class="btn" id="filter-all">全部</button>
                 <button class="btn secondary" id="filter-photos">只看照片</button>
                 <button class="btn secondary" id="filter-certs">只看證書</button>
-                <a class="btn" href="profile.html">返回個人檔案</a>
             </div>
         </div>
     </div>
@@ -153,4 +180,3 @@
     <div class="lightbox"><img alt="預覽" src=""/></div>
 </body>
 </html>
-
