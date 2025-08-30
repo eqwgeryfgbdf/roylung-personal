@@ -4,110 +4,368 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>龍禹丞 - 個人檔案</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* CSS 變數定義 */
+        :root {
+            --primary-color: #123458;
+            --secondary-color: #030303;
+            --accent-color: #D4C9BE;
+            --light-color: #F1EFEC;
+            --shadow-light: rgba(3, 3, 3, 0.1);
+            --shadow-medium: rgba(3, 3, 3, 0.2);
+            --shadow-heavy: rgba(3, 3, 3, 0.3);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --border-radius: 8px;
+            --border-radius-large: 20px;
+        }
+
+        /* 基礎重置和優化 */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
         body {
-            background-color: #D4C9BE;
-            color: #030303;
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 1rem; }
+
+        /* 容器優化 */
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 0 1rem; 
+        }
+
+        /* 頁面載入動畫 */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 滾動動畫 */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 頭部樣式優化 */
         .profile-header {
-            background: linear-gradient(135deg, #123458 0%, #030303 100%);
-            color: #F1EFEC;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--light-color);
             padding: 2rem 0;
             margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
         }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* 頭像優化 */
         .profile-avatar {
             width: 280px;
             height: 280px;
             border-radius: 50%;
-            border: 5px solid #F1EFEC;
+            border: 5px solid var(--light-color);
             object-fit: cover;
-            box-shadow: 0 4px 8px rgba(3, 3, 3, 0.2);
-            transition: transform 0.3s ease;
+            box-shadow: 0 8px 32px var(--shadow-medium);
+            transition: all var(--transition-normal) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
-        .profile-avatar:hover { transform: scale(1.05); }
+
+        .profile-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .profile-avatar:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 12px 40px var(--shadow-heavy);
+        }
+
+        .profile-avatar:hover::before {
+            left: 100%;
+        }
+
+        /* 區段標題優化 */
         .section-title {
-            color: #123458;
-            border-bottom: 2px solid #123458;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 0.3rem;
             margin-bottom: 1rem;
             font-size: 1.5rem;
             font-weight: 600;
+            position: relative;
+            transition: all var(--transition-normal);
         }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transition: width var(--transition-normal);
+        }
+
+        .section-title:hover::after {
+            width: 100%;
+        }
+
+        /* 卡片優化 */
         .card {
             border: none;
-            background-color: #F1EFEC;
-            box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+            background-color: var(--light-color);
+            box-shadow: 0 4px 16px var(--shadow-light);
             margin-bottom: 1rem;
-            transition: all 0.3s ease;
-            border-radius: 8px;
+            transition: all var(--transition-normal) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: var(--border-radius);
             overflow: hidden;
+            position: relative;
+            transform: translateZ(0);
+            will-change: transform, box-shadow;
         }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transition: transform var(--transition-normal);
+        }
+
         .card:hover {
-            box-shadow: 0 4px 8px rgba(3, 3, 3, 0.2);
+            box-shadow: 0 8px 32px var(--shadow-medium);
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-body { 
+            padding: 1.5rem; 
+            transition: all var(--transition-normal);
+        }
+
+        .card:hover .card-body {
             transform: translateY(-2px);
         }
-        .card-body { padding: 1rem; }
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #123458;
-        }
-        .card-subtitle {
-            color: #030303;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            opacity: 0.8;
-        }
-        .card-text {
-            color: #030303;
-            margin-bottom: 0.5rem;
-        }
+
+        /* 技能標籤優化 */
         .skill-tag {
-            background-color: #123458;
-            color: #F1EFEC;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius-large);
             margin: 0.25rem;
             display: inline-block;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
         }
+
+        .skill-tag::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%);
+        }
+
         .skill-tag:hover {
-            background-color: #030303;
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px var(--shadow-medium);
         }
+
+        .skill-tag:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .skill-tag:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        /* 社交連結優化 */
         .social-links a {
-            color: #F1EFEC;
+            color: var(--light-color);
             margin: 0 0.5rem;
             font-size: 1.5rem;
-            transition: all 0.3s ease;
+            transition: all var(--transition-normal);
             text-decoration: none;
+            position: relative;
+            display: inline-block;
         }
+
+        .social-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: all var(--transition-normal);
+            transform: translateX(-50%);
+        }
+
         .social-links a:hover {
-            color: #D4C9BE;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .social-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 按鈕優化 */
+        .btn-primary, .btn-outline-primary {
+            transition: all var(--transition-normal) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: var(--light-color);
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            background-color: transparent;
+        }
+
+        .btn-primary:hover, .btn-outline-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+        }
+
+        .btn-outline-primary:hover {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-color);
+            border-color: transparent;
+        }
+
+        /* 專案連結優化 */
+        .project-links a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all var(--transition-normal);
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-links a:hover {
+            color: var(--light-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--shadow-medium);
         }
-        .introduction-text {
-            line-height: 1.8;
-            white-space: pre-line;
-            font-size: 1.1rem;
-            color: #030303;
-            text-align: justify;
+
+        .project-links a:hover::before {
+            left: 100%;
         }
+
+        /* 影片容器優化 */
         .video-container {
             position: relative;
             padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             margin-bottom: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 16px var(--shadow-light);
+            transition: all var(--transition-normal);
         }
+
+        .video-container:hover {
+            box-shadow: 0 8px 32px var(--shadow-medium);
+            transform: scale(1.02);
+        }
+
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -116,75 +374,73 @@
             height: 100%;
             border: 0;
         }
-        .project-links a {
-            margin-right: 10px;
-            text-decoration: none;
-            color: #123458;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border: 1px solid #123458;
-            border-radius: 4px;
-            display: inline-block;
+
+        /* 響應式設計優化 */
+        @media (max-width: 768px) {
+            .profile-avatar {
+                width: 220px;
+                height: 220px;
+                margin-bottom: 1rem;
+            }
+            
+            .col-lg-8, .col-lg-4, .col-md-6 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+            .display-4 { font-size: 2rem; }
+            .h3 { font-size: 1.5rem; }
+            
+            .card-body { padding: 1rem; }
         }
-        .project-links a:hover {
-            color: #F1EFEC;
-            background-color: #123458;
-            text-decoration: none;
+
+        @media (min-width: 1200px) {
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
         }
-        .list-unstyled { list-style: none; }
-        .list-unstyled li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
+
+        /* 載入動畫優化 */
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.6s ease-out forwards;
         }
-        .list-unstyled li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #123458;
-            font-weight: bold;
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .btn-primary {
-            background-color: #123458;
-            border-color: #123458;
-            color: #F1EFEC;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-primary:hover {
-            background-color: #030303;
-            border-color: #030303;
-            transform: translateY(-2px);
-            color: #F1EFEC;
-        }
-        .btn-outline-primary {
-            color: #123458;
-            border: 1px solid #123458;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-            background-color: transparent;
-        }
-        .btn-outline-primary:hover {
-            background-color: #123458;
-            color: #F1EFEC;
-            transform: translateY(-2px);
-        }
+
+        /* 實用工具類別 */
         .row {
             display: flex;
             flex-wrap: wrap;
             margin: 0 -0.5rem;
         }
-        .col-lg-8, .col-lg-4, .col-md-6 { padding: 0 0.5rem; }
-        .col-lg-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
-        .col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
-        .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+        
+        .col-lg-8, .col-lg-4, .col-md-6 { 
+            padding: 0 0.5rem; 
+        }
+        
+        .col-lg-8 { 
+            flex: 0 0 66.666667%; 
+            max-width: 66.666667%; 
+        }
+        
+        .col-lg-4 { 
+            flex: 0 0 33.333333%; 
+            max-width: 33.333333%; 
+        }
+        
+        .col-md-6 { 
+            flex: 0 0 50%; 
+            max-width: 50%; 
+        }
+        
         .text-center { text-align: center; }
         .mb-1 { margin-bottom: 0.25rem !important; }
         .mb-2 { margin-bottom: 0.5rem !important; }
@@ -193,83 +449,244 @@
         .mb-5 { margin-bottom: 3rem !important; }
         .mt-2 { margin-top: 0.5rem !important; }
         .mt-3 { margin-top: 1rem !important; }
+        
         .display-4 {
             font-size: 2.5rem;
             font-weight: 300;
             line-height: 1.2;
         }
+        
         .h3 {
             font-size: 1.75rem;
             font-weight: 500;
             line-height: 1.2;
         }
+        
         .lead {
             font-size: 1.25rem;
             font-weight: 300;
         }
+        
         .text-muted {
-            color: #030303 !important;
+            color: var(--secondary-color) !important;
             opacity: 0.8;
         }
+        
         .small { font-size: 0.875em; }
         .d-flex { display: flex; }
         .justify-content-between { justify-content: space-between; }
         .align-items-start { align-items: flex-start; }
         .align-items-center { align-items: center; }
+        
+        .introduction-text {
+            line-height: 1.8;
+            white-space: pre-line;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            text-align: justify;
+        }
+        
+        .list-unstyled { 
+            list-style: none; 
+        }
+        
+        .list-unstyled li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .list-unstyled li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
         .github-stats {
             margin-top: 8px;
             font-size: 12px;
-            color: #030303;
-        }
-        .github-stats span { margin-right: 16px; }
-        
-        @media (max-width: 768px) {
-            .profile-avatar {
-                width: 220px;
-                height: 220px;
-                margin-bottom: 1rem;
-            }
-            .col-lg-8, .col-lg-4, .col-md-6 {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-            .display-4 { font-size: 2rem; }
-            .h3 { font-size: 1.5rem; }
+            color: var(--secondary-color);
         }
         
-        @media (min-width: 1200px) {
-            .container {
-                padding-left: 2rem;
-                padding-right: 2rem;
+        .github-stats span { 
+            margin-right: 16px; 
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .card-subtitle {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .card-text {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* 滾動條美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        }
+
+        /* 選擇文字美化 */
+        ::selection {
+            background: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        /* 焦點樣式優化 */
+        .skill-tag:focus,
+        .btn-primary:focus,
+        .btn-outline-primary:focus,
+        .project-links a:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* 性能優化 */
+        .card,
+        .skill-tag,
+        .btn-primary,
+        .btn-outline-primary,
+        .project-links a {
+            will-change: transform, box-shadow;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+
+        /* 載入狀態指示器 */
+        .loading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            transform: scaleX(0);
+            transform-origin: left;
+            animation: loadingBar 2s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes loadingBar {
+            to { transform: scaleX(1); }
+        }
+
+        /* 平滑滾動 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 選擇文字優化 */
+        ::selection {
+            background: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        ::-moz-selection {
+            background: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        /* 鍵盤導航樣式 */
+        .keyboard-navigation .skill-tag:focus,
+        .keyboard-navigation .btn-primary:focus,
+        .keyboard-navigation .btn-outline-primary:focus,
+        .keyboard-navigation .project-links a:focus {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 3px;
+            box-shadow: 0 0 0 3px rgba(212, 201, 190, 0.3);
+        }
+
+        /* 減少動畫偏好設定支援 */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
+            
+            .loading-indicator {
+                display: none !important;
+            }
+        }
+
+        /* 工具提示動畫 */
+        .skill-tag[title]:hover::after {
+            content: attr(title);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-color);
+            color: var(--light-color);
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            white-space: nowrap;
+            z-index: 1000;
+            animation: tooltipFadeIn 0.3s ease;
+        }
+
+        @keyframes tooltipFadeIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
     </style>
 </head>
 <body>
+<!-- 載入狀態指示器 -->
+<div class="loading-indicator"></div>
+
 <div class="profile-header">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-4 col-md-5 text-center">
-                <img id="profile-avatar" src="" alt="個人照片" class="profile-avatar mb-3">
-            </div>
-            <div class="col-lg-8 col-md-7">
-                <h1 id="profile-name" class="display-4 mb-2"></h1>
-                <h2 id="profile-title" class="h3 mb-2"></h2>
-                <p id="profile-location" class="mb-1"></p>
-                <p id="profile-contact" class="mb-2"></p>
-                <p id="profile-objective" class="lead mb-3"></p>
-                <div class="social-links">
-                    <a href="#" id="github-link" target="_blank">📁 GitHub</a>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-5 text-center">
+                        <img id="profile-avatar" src="" alt="個人照片" class="profile-avatar mb-3 fade-in" style="animation-delay: 0.2s;">
+                    </div>
+                    <div class="col-lg-8 col-md-7">
+                        <h1 id="profile-name" class="display-4 mb-2 fade-in" style="animation-delay: 0.4s;"></h1>
+                        <h2 id="profile-title" class="h3 mb-2 fade-in" style="animation-delay: 0.6s;"></h2>
+                        <p id="profile-location" class="mb-1 fade-in" style="animation-delay: 0.8s;"></p>
+                        <p id="profile-contact" class="mb-2 fade-in" style="animation-delay: 1.0s;"></p>
+                        <p id="profile-objective" class="lead mb-3 fade-in" style="animation-delay: 1.2s;"></p>
+                        <div class="social-links fade-in" style="animation-delay: 1.4s;">
+                            <a href="#" id="github-link" target="_blank">📁 GitHub</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <section class="mb-5">
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">關於我</h3>
                 <div class="card">
                     <div class="card-body">
@@ -278,34 +695,34 @@
                 </div>
             </section>
 
-            <section class="mb-5">
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">工作經驗</h3>
                 <div id="experience"></div>
             </section>
 
-            <section class="mb-5">
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">專案經驗</h3>
                 <div id="projects"></div>
             </section>
 
-            <section class="mb-5">
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">GitHub 作品集</h3>
                 <div id="github-projects"></div>
             </section>
 
-            <section class="mb-5">
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">作品展示</h3>
                 <div id="project-videos" class="row"></div>
             </section>
         </div>
 
         <div class="col-lg-4">
-            <section class="mb-5">
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">教育經歷</h3>
                 <div id="education"></div>
             </section>
 
-            <section class="mb-5">
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">技能專長</h3>
                 <div class="card">
                     <div class="card-body">
@@ -321,16 +738,16 @@
                 </div>
             </section>
 
-            <section class="mb-5">
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">證照與認證</h3>
                 <div id="certifications"></div>
             </section>
 
-            <section class="mb-5">
+            <section class="mb-5 scroll-reveal">
                 <h3 class="section-title">競賽經歷</h3>
                 <div id="competitions"></div>
                 <div class="text-center mt-3">
-                    <a href="awards.html" class="btn btn-primary">
+                    <a href="awards.html" class="btn btn-primary" style="animation-delay: 0.5s;">
                         🏆 查看所有獎狀
                     </a>
                 </div>
@@ -470,6 +887,30 @@
             }
         ],
         "competitions": [
+            {
+                "name": "2025 Metro Hackathon",
+                "name_zh": "2025 捷運盃黑客松",
+                "organizer": "Metro Taipei, Cathay United Bank",
+                "organizer_zh": "台北捷運、國泰世華銀行",
+                "date": "2025/08/30",
+                "achievement": "Second Place",
+                "achievement_zh": "亞軍",
+                "description": "Team: J-ET 我拾緣; Theme: Find the Black Passenger",
+                "description_zh": "隊名：捷我拾緣；主題：尋找黑捷客",
+                "certificate": "data/competition_certificates/metro_hackathon/黑客松-捷運盃-獎狀.png"
+            },
+            {
+                "name": "Green Idea Invention and Design Fair",
+                "name_zh": "綠色點子發明設計展",
+                "organizer": "GIIDF",
+                "organizer_zh": "Green Idea Invention and Design Fair",
+                "date": "2025/08/01-02",
+                "achievement": "Titanium Prize",
+                "achievement_zh": "Titanium Prize",
+                "description": "SmartCube Multidimensional Parking System",
+                "description_zh": "SmartCube 多維停車系統",
+                "certificate": "data/competition_certificates/invention_expo/高雄發明展/綠點子-獎狀.png"
+            },
             {
                 "name": "2025 E-System Innovation Application Competition",
                 "name_zh": "2025 E化系統創意應用競賽",
@@ -744,8 +1185,123 @@
         document.getElementById('competitions').innerHTML = competitionsHtml;
     }
 
+    // 滾動動畫觀察器
+    function initScrollAnimations() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // 觀察所有需要動畫的元素
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+    }
+
+    // 技能標籤點擊動畫
+    function initSkillTagAnimations() {
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('skill-tag')) {
+                // 添加點擊波紋效果
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255,255,255,0.6);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                const rect = e.target.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                
+                e.target.style.position = 'relative';
+                e.target.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            }
+        });
+    }
+
+    // 卡片懸停效果增強
+    function initCardHoverEffects() {
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('.card')) {
+                const card = e.target.closest('.card');
+                card.style.transform = 'translateY(-4px) scale(1.02)';
+            }
+        });
+
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.closest('.card')) {
+                const card = e.target.closest('.card');
+                card.style.transform = 'translateY(0) scale(1)';
+            }
+        });
+    }
+
     // 頁面載入完成後執行
-    document.addEventListener('DOMContentLoaded', loadProfileData);
+    document.addEventListener('DOMContentLoaded', () => {
+        // 顯示載入指示器
+        const loadingIndicator = document.querySelector('.loading-indicator');
+        if (loadingIndicator) {
+            loadingIndicator.style.display = 'block';
+        }
+
+        // 載入個人資料
+        loadProfileData();
+        
+        // 延遲初始化動畫，確保內容已載入
+        setTimeout(() => {
+            initScrollAnimations();
+            initSkillTagAnimations();
+            initCardHoverEffects();
+            
+            // 隱藏載入指示器
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+            }
+        }, 100);
+    });
+
+    // 添加鍵盤導航支援
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-navigation');
+        }
+    });
+
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-navigation');
+    });
+
+    // 添加 CSS 動畫
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+        
+        .card {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+    `;
+    document.head.appendChild(style);
 </script>
 </body>
 </html>
