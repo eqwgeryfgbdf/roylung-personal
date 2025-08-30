@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活動時間軸</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <style>
+        :root {
+            --primary-color: #123458;
+            --secondary-color: #030303;
+            --accent-color: #D4C9BE;
+            --light-color: #F1EFEC;
+            --line: rgba(3,3,3,.18);
+            --shadow: 0 8px 20px rgba(3,3,3,.15);
+            --radius: 14px;
+        }
+        * { box-sizing: border-box; }
+        body { margin:0; background: var(--accent-color); color: var(--secondary-color); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: var(--light-color); padding: 24px 16px; box-shadow: var(--shadow); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 18px 16px; }
+        .title { margin: 0 0 6px 0; font-size: 26px; letter-spacing: .5px; }
+        .subtitle { margin: 0; opacity: .9; }
+        .toolbar { display:flex; gap:10px; flex-wrap: wrap; margin-top: 14px; }
+        .btn { border:0; background: var(--primary-color); color: var(--light-color); padding:8px 14px; border-radius: 24px; cursor:pointer; box-shadow: var(--shadow); text-decoration: none; display:inline-block; }
+        .btn.secondary { background: transparent; color: var(--light-color); border: 1px solid rgba(255,255,255,.6); }
+
+        /* Timeline */
+        .timeline { position: relative; margin: 20px 0; }
+        .timeline::before { content:""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: var(--line); transform: translateX(-50%); }
+        .year { position: relative; text-align: center; margin: 24px 0; }
+        .year .badge { display:inline-block; background: var(--secondary-color); color: var(--light-color); padding: 6px 12px; border-radius: 18px; box-shadow: var(--shadow); font-weight: 700; letter-spacing: .5px; }
+        .item { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; margin: 18px 0; }
+        .card { background: var(--light-color); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+        .card .media { position: relative; padding-top: 56%; background: #eae7e3; }
+        .card .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .card .body { padding: 12px 14px; }
+        .card .title { font-size: 18px; margin: 0 0 4px 0; color: var(--secondary-color); }
+        .card .meta { font-size: 13px; color: #555; margin-bottom: 6px; }
+        .dot { position: absolute; left: 50%; width: 14px; height: 14px; background: var(--primary-color); border-radius: 50%; transform: translateX(-50%); box-shadow: var(--shadow); border: 2px solid #fff; }
+        .dot::after { content:""; position:absolute; inset:-6px; border-radius:50%; background: rgba(18,52,88,.12); }
+        .left .content { grid-column: 1 / 2; }
+        .left .spacer  { grid-column: 2 / 3; }
+        .right .content { grid-column: 2 / 3; }
+        .right .spacer  { grid-column: 1 / 2; }
+        .left .dot { top: 50%; }
+        .right .dot { top: 50%; }
+        .links { margin-top: 6px; display: flex; gap: 10px; }
+        .link { text-decoration: none; color: var(--primary-color); font-weight: 600; }
+
+        @media (max-width: 900px){
+            .timeline::before { left: 18px; transform: none; }
+            .item { grid-template-columns: 36px 1fr; }
+            .left .content, .right .content { grid-column: 2 / 3; }
+            .left .spacer, .right .spacer { display:none; }
+            .dot { left: 18px; }
+        }
+    </style>
+    <script>
+        function parseSortKey(str){
+            if(!str) return 0;
+            const m = String(str).match(/(20\d{2})(?:\/(\d{1,2})(?:\/(\d{1,2}))?)?/);
+            if(!m) return 0;
+            const y = +m[1], mo = +(m[2]||'12'), d = +(m[3]||'31');
+            return y*10000 + mo*100 + d;
+        }
+        function extractYear(str){
+            const m = String(str||'').match(/(19|20)\d{2}/);
+            return m ? m[0] : '未知';
+        }
+        async function load(){
+            const res = await fetch('data/profile.json');
+            const data = await res.json();
+            const photos = (data.competitionPhotos||[]).map(p=>({
+                year: extractYear(p.date),
+                sort: parseSortKey(p.date),
+                date: p.date,
+                title: p.title_zh || p.title,
+                desc: p.description_zh || p.description,
+                img: p.image,
+                source: p.competition
+            }));
+            // 新→舊
+            photos.sort((a,b)=> b.sort - a.sort);
+            render(photos);
+        }
+        function groupByYear(items){
+            const map = new Map();
+            for(const it of items){
+                if(!map.has(it.year)) map.set(it.year, []);
+                map.get(it.year).push(it);
+            }
+            // 依年份排序（新→舊）
+            return Array.from(map.entries()).sort((a,b)=> (+b[0]) - (+a[0]) );
+        }
+        function render(items){
+            const timeline = document.querySelector('.timeline');
+            const groups = groupByYear(items);
+            let html = '';
+            groups.forEach(([year, list])=>{
+                html += `<div class="year"><span class="badge">${year}</span></div>`;
+                list.forEach((it, idx)=>{
+                    const side = idx % 2 === 0 ? 'left' : 'right';
+                    html += `
+                    <div class="item ${side}">
+                        <div class="spacer"></div>
+                        <div class="content">
+                            <div class="card">
+                                <div class="media"><img src="${it.img}" alt="${it.title}"></div>
+                                <div class="body">
+                                    <div class="title">${it.title}</div>
+                                    <div class="meta">${it.date} · ${it.source || ''}</div>
+                                    ${it.desc ? `<div class="text">${it.desc}</div>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dot"></div>
+                    </div>`;
+                });
+            });
+            timeline.innerHTML = html;
+        }
+        document.addEventListener('DOMContentLoaded', load);
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="title">活動時間軸</h1>
+            <p class="subtitle">以時間軸呈現競賽與研討會照片</p>
+            <div class="toolbar">
+                <a class="btn" href="gallery.html">切換為圖庫</a>
+                <a class="btn secondary" href="profile.html">返回個人檔案</a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="timeline"></div>
+    </div>
+</body>
+</html>
+

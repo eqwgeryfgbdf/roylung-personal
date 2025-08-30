@@ -747,12 +747,9 @@
                 <h3 class="section-title">競賽經歷</h3>
                 <div id="competitions"></div>
                 <div class="text-center mt-3">
-                    <a href="awards.html" class="btn btn-primary" style="animation-delay: 0.5s;">
-                        🏆 查看所有獎狀
-                    </a>
-                    <a href="gallery.html" class="btn btn-outline-light" style="margin-left:8px; animation-delay: 0.6s;">
-                        📸 查看活動照片
-                    </a>
+                    <a href="awards.html" class="btn btn-primary" style="animation-delay: 0.5s;">🏆 查看所有獎狀</a>
+                    <a href="gallery.html" class="btn btn-outline-light" style="margin-left:8px; animation-delay: 0.6s;">📸 圖庫模式</a>
+                    <a href="timeline.html" class="btn btn-outline-light" style="margin-left:8px; animation-delay: 0.7s;">📅 時間軸</a>
                 </div>
             </section>
         </div>
@@ -1180,7 +1177,8 @@
                         </p>
                         <p class="card-text">${comp.description_zh ? comp.description_zh.replace(/\n/g, '<br>') : comp.description.replace(/\n/g, '<br>')}</p>
                         <a href="awards.html" class="btn-outline-primary">🏆 查看證書</a>
-                        <a href="gallery.html" class="btn-outline-primary" style="margin-left:8px;">📸 查看照片</a>
+                        <a href="gallery.html" class="btn-outline-primary" style="margin-left:8px;">📸 照片圖庫</a>
+                        <a href="timeline.html" class="btn-outline-primary" style="margin-left:8px;">📅 時間軸</a>
                     </div>
                 </div>
             `).join('');
